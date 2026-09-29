@@ -34,7 +34,8 @@ export const api = {
   ask: (question, vendorId) => request("/memory/ask", { method: "POST", body: { question, vendor_id: vendorId || null } }),
 };
 
-const inr = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 2, minimumFractionDigits: 0 });
-export const money = (n) => (n == null ? "" : inr.format(Number(n)));
+const inrWhole = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+const inrPaise = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+export const money = (n) => (n == null ? "" : Number.isInteger(Number(n)) ? inrWhole.format(Number(n)) : inrPaise.format(Number(n)));
 export const day = (s) =>
   s ? new Date(s).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "";

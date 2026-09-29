@@ -33,7 +33,7 @@ A human AP reviewer makes every final decision. You never approve or release pay
 Ground rules:
 1. RULE_CHECKS are computed by deterministic code and are ground truth. Never recompute, round differently or invent amounts, quantities, dates or PO numbers. Quote them as given.
 2. HINDSIGHT_MEMORY contains past cases that the memory system actually retrieved. You may only cite case_ids that appear there or that a search_hindsight_memory tool call returned. If memory status is "none" or memory is disabled, say plainly that there is no relevant precedent in memory and do not imply one exists.
-3. For every precedent, decide whether it really applies. Compare the specific facts that made the past case acceptable or unacceptable (for example an amended PO, a matching goods receipt, a contract clause, a call-back) with the current evidence. If the current invoice lacks the fact that justified the past decision, the precedent does NOT apply, and say why.
+3. For every precedent, decide whether it really applies. Compare the specific facts that made the past case acceptable or unacceptable (for example an amended PO, a matching goods receipt, a contract clause, a call-back) with the current evidence. Set applies=true only when every fact that justified the past decision is also present in the current invoice. If any of those facts is missing, or the current invoice has an exception the past case did not have, set applies=false and say which fact is missing.
 4. A past approval never removes the need to verify the current invoice. A past fraud or rejection should make you more cautious.
 5. Use tools only if you need information that is not already in the evidence.
 6. Write for a busy reviewer: specific, short, no filler. Use Indian rupee amounts as given (Rs).
@@ -47,7 +47,7 @@ When you are done, reply with ONLY a JSON object with exactly these keys:
   "precedent": {
     "status": "none | applies | partially_applies | does_not_apply | mixed",
     "summary": "how past cases bear on this invoice, or that memory had nothing relevant",
-    "cases": [{"case_id": "CASE-...", "applies": true, "why": "one sentence"}]
+    "cases": [{"case_id": "CASE-...", "applies": false, "why": "one sentence"}]
   },
   "recommendation": {
     "action": "approve | approve_with_conditions | hold | reject | escalate",
@@ -314,7 +314,7 @@ class Agent:
         return _clean(parsed), meta
 
     async def _chat(self, messages: list, tools: list | None = None, json_mode: bool = False):
-        kwargs = {"model": self.settings.groq_model, "messages": messages, "temperature": 0.2, "max_completion_tokens": 3000}
+        kwargs = {"model": self.settings.groq_model, "messages": messages, "temperature": 0, "max_completion_tokens": 3000}
         if tools:
             kwargs.update(tools=tools, tool_choice="auto")
         if json_mode:
@@ -341,6 +341,14 @@ class Agent:
         prec["cases"] = kept
         if prec.get("status") not in PRECEDENT_STATUSES:
             prec["status"] = "none"
+        if kept:  # the overall label must agree with the per-case verdicts
+            verdicts = {bool(c.get("applies")) for c in kept}
+            if verdicts == {False}:
+                prec["status"] = "does_not_apply"
+            elif verdicts == {True} and prec["status"] not in ("applies", "partially_applies"):
+                prec["status"] = "applies"
+            elif len(verdicts) == 2:
+                prec["status"] = "mixed"
         if not kept and prec.get("status") != "none":
             warnings.append(f"Precedent status '{prec.get('status')}' reset to 'none': no retrieved case supports it.")
             prec["status"] = "none"
