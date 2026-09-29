@@ -48,6 +48,8 @@ export default function App() {
   const [memBusy, setMemBusy] = useState(null);
   const [memMsg, setMemMsg] = useState(null);
   const [view, setView] = useState(() => {
+    const fromHash = window.location.hash.replace("#", "");
+    if (VIEWS[fromHash]) return fromHash;
     try { return localStorage.getItem("precedent.view") || "desk"; } catch { return "desk"; }
   });
   const [reviewer, setReviewer] = useState(() => {
@@ -64,6 +66,7 @@ export default function App() {
   }, [reviewer]);
   useEffect(() => {
     try { localStorage.setItem("precedent.view", view); } catch {}
+    if (window.location.hash !== `#${view}`) window.history.replaceState(null, "", `#${view}`);
   }, [view]);
 
   const refreshStats = useCallback(() => {

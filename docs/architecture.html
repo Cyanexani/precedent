@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Precedent architecture</title>
+<style>
+  body { margin: 0; background: #ffffff; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  svg { display: block; }
+  .box { fill: #ffffff; stroke: #d7d8db; stroke-width: 1.5; }
+  .mem { fill: #f5f3ff; stroke: #6d28d9; stroke-width: 2; }
+  .dark { fill: #222326; }
+  .t { font-size: 16px; font-weight: 600; fill: #222326; }
+  .s { font-size: 13px; fill: #5d5f67; }
+  .tw { font-size: 16px; font-weight: 600; fill: #ffffff; }
+  .sw { font-size: 13px; fill: #d7d8db; }
+  .tm { font-size: 16px; font-weight: 700; fill: #5b21b6; }
+  .arrow { stroke: #5d5f67; stroke-width: 1.5; fill: none; marker-end: url(#a); }
+  .marrow { stroke: #6d28d9; stroke-width: 2; fill: none; marker-end: url(#am); }
+  .lbl { font-size: 12px; fill: #5d5f67; }
+  .mlbl { font-size: 12px; font-weight: 600; fill: #6d28d9; }
+</style>
+</head>
+<body>
+<svg width="1200" height="640" viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5d5f67" /></marker>
+    <marker id="am" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6d28d9" /></marker>
+  </defs>
+  <text x="40" y="44" style="font-size:24px;font-weight:700;fill:#222326">Precedent: where Hindsight sits</text>
+  <text x="40" y="70" class="s">Numbers come from code. Judgment comes from memory. The reviewer decides.</text>
+
+  <!-- reviewer + UI -->
+  <rect x="40" y="110" width="250" height="110" rx="12" class="dark" />
+  <text x="60" y="145" class="tw">AP reviewer</text>
+  <text x="60" y="170" class="sw">React dashboard: desk, replay,</text>
+  <text x="60" y="190" class="sw">memory ledger and playbook</text>
+
+  <!-- API -->
+  <rect x="380" y="110" width="330" height="110" rx="12" class="box" />
+  <text x="400" y="145" class="t">FastAPI</text>
+  <text x="400" y="170" class="s">analyze, compare, resolve, notes,</text>
+  <text x="400" y="190" class="s">triage, replay, ledger, playbook</text>
+  <path d="M290 150 L378 150" class="arrow" />
+  <path d="M378 185 L292 185" class="arrow" />
+
+  <!-- rules -->
+  <rect x="40" y="300" width="300" height="150" rx="12" class="box" />
+  <text x="60" y="335" class="t">rules.py (deterministic)</text>
+  <text x="60" y="360" class="s">PO and GRN match, GST head, duplicates,</text>
+  <text x="60" y="380" class="s">vendor baseline, bank changes, MSME</text>
+  <text x="60" y="400" class="s">45-day rule, approval tiers, invoice</text>
+  <text x="60" y="420" class="s">text red flags</text>
+  <path d="M470 222 L230 298" class="arrow" />
+  <text x="250" y="262" class="lbl">1. run checks</text>
+
+  <!-- agent -->
+  <rect x="400" y="300" width="300" height="150" rx="12" class="box" />
+  <text x="420" y="335" class="t">agent.py (Groq, gpt-oss-120b)</text>
+  <text x="420" y="360" class="s">explains findings, judges whether each</text>
+  <text x="420" y="380" class="s">precedent applies, recommends an action</text>
+  <text x="420" y="400" class="s">guardrail strips any case id Hindsight</text>
+  <text x="420" y="420" class="s">did not return</text>
+  <path d="M550 222 L550 298" class="arrow" />
+  <text x="560" y="262" class="lbl">3. reason</text>
+
+  <!-- hindsight -->
+  <rect x="780" y="110" width="380" height="440" rx="16" class="mem" />
+  <text x="800" y="145" class="tm">Hindsight memory bank</text>
+  <text x="800" y="175" class="s">retain: human resolutions as case notes,</text>
+  <text x="800" y="195" class="s">metadata and tags (vendor, exception,</text>
+  <text x="800" y="215" class="s">decision, reviewer); vendor emails,</text>
+  <text x="800" y="235" class="s">reviewer preferences, team policies</text>
+  <text x="800" y="275" class="s">recall: tag-scoped passes for vendor,</text>
+  <text x="800" y="295" class="s">exception type, reviewer and policy;</text>
+  <text x="800" y="315" class="s">code gates results into none, one or</text>
+  <text x="800" y="335" class="s">several precedents</text>
+  <text x="800" y="375" class="s">observations: patterns consolidated</text>
+  <text x="800" y="395" class="s">automatically from repeated cases</text>
+  <text x="800" y="435" class="s">mental models: AP Exception Playbook</text>
+  <text x="800" y="455" class="s">and Vendor Watchlist, rewritten after</text>
+  <text x="800" y="475" class="s">consolidation</text>
+  <text x="800" y="515" class="s">reflect: "brief me on this vendor"</text>
+
+  <path d="M712 150 L776 150" class="marrow" />
+  <text x="716" y="140" class="mlbl">2. recall</text>
+  <path d="M776 200 L712 200" class="marrow" />
+  <path d="M712 214 C 750 214, 740 480, 776 480" class="marrow" />
+  <text x="720" y="300" class="mlbl">5. retain the</text>
+  <text x="720" y="316" class="mlbl">reviewer's</text>
+  <text x="720" y="332" class="mlbl">decision</text>
+  <text x="400" y="475" class="lbl">4. the reviewer decides in the dashboard.</text>
+  <text x="400" y="491" class="lbl">The agent has no tool that writes memory.</text>
+
+  <!-- loop caption -->
+  <rect x="40" y="500" width="660" height="100" rx="12" fill="#f6f7f7" />
+  <text x="60" y="535" class="t">The loop</text>
+  <text x="60" y="560" class="s">Invoice arrives, rules flag it, Hindsight recalls similar resolved cases, the agent explains and recommends,</text>
+  <text x="60" y="580" class="s">the reviewer decides, and only that human decision is retained. The next similar invoice recalls it.</text>
+</svg>
+</body>
+</html>
