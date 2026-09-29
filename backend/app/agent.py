@@ -174,7 +174,7 @@ class Agent:
         self.settings = settings
         self.store = store
         self.memory = memory
-        self.llm = AsyncGroq(api_key=settings.groq_api_key) if settings.groq_api_key else None
+        self.llm = AsyncGroq(api_key=settings.groq_api_key, max_retries=6) if settings.groq_api_key else None
         # the replay makes many calls in a row, so it waits out rate limits instead of failing
         self.llm_patient = AsyncGroq(api_key=settings.groq_api_key, max_retries=10) if settings.groq_api_key else None
 
