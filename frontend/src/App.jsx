@@ -208,14 +208,18 @@ export default function App() {
             <span className="mono">{config.bank_id}</span>
             <span className="side-label">{stats ? `${stats.memory_units} memory units` : "Connecting"}</span>
           </div>
-          <div className="side-actions">
-            <button className="btn-side" disabled={!!memBusy} onClick={() => memoryAction("seed")}>
-              {memBusy === "seed" ? "Loading" : "Load team history"}
-            </button>
-            <button className="btn-side" disabled={!!memBusy} onClick={() => memoryAction("reset")}>
-              {memBusy === "reset" ? "Clearing" : "Reset memory"}
-            </button>
-          </div>
+          {config.public_demo ? (
+            <p className="side-foot">Public demo. Reset, seeding and new replay runs are turned off so the shared memory stays intact.</p>
+          ) : (
+            <div className="side-actions">
+              <button className="btn-side" disabled={!!memBusy} onClick={() => memoryAction("seed")}>
+                {memBusy === "seed" ? "Loading" : "Load team history"}
+              </button>
+              <button className="btn-side" disabled={!!memBusy} onClick={() => memoryAction("reset")}>
+                {memBusy === "reset" ? "Clearing" : "Reset memory"}
+              </button>
+            </div>
+          )}
           <p className="side-foot">Model {config.model}</p>
         </div>
       </aside>
@@ -228,10 +232,10 @@ export default function App() {
           </div>
         </header>
 
-        {view === "replay" && <ReplayView onFinished={memoryChanged} />}
+        {view === "replay" && <ReplayView onFinished={memoryChanged} publicDemo={config.public_demo} />}
 
         {view === "memory" && (
-          <MemoryView key={memoryVersion} reviewer={reviewer} vendors={vendors} onMemoryChanged={memoryChanged} />
+          <MemoryView key={memoryVersion} reviewer={reviewer} vendors={vendors} onMemoryChanged={memoryChanged} publicDemo={config.public_demo} />
         )}
 
         {view === "desk" && (

@@ -1,0 +1,7 @@
+# Runtime dependencies for the Vercel Python function. Local development uses backend/requirements.txt.
+fastapi==0.141.1
+hindsight-client==0.10.1
+groq==1.7.0
+python-dotenv==1.2.3
+pydantic==2.13.5
+httpx==0.28.1

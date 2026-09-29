@@ -1,0 +1,646 @@
+{
+  "status": "done",
+  "steps": [
+    {
+      "n": 1,
+      "invoice_id": "RPL-01",
+      "invoice_no": "SGP/26-27/0301",
+      "arrived_on": "2026-07-05",
+      "vendor_name": "Shree Ganesh Packaging Pvt Ltd",
+      "total": 78470.0,
+      "exception_codes": [
+        "AMOUNT_SPIKE"
+      ],
+      "recorded": {
+        "decision": "approve",
+        "reviewer": "Priya Nair",
+        "reason": "Monsoon stock build-up. Procurement amended the PO from 1,200 to 1,900 boxes before dispatch and the GRN confirms all 1,900."
+      },
+      "with_memory": {
+        "action": "hold",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Medium amount spike without prior precedent requires further review",
+        "error": false,
+        "agreed": false
+      },
+      "without_memory": {
+        "action": "hold",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Medium amount spike without prior precedent requires further review",
+        "error": false,
+        "agreed": false
+      },
+      "memory": {
+        "precedent_count": 0,
+        "status": "none",
+        "strength": "No direct precedent",
+        "precedents": []
+      },
+      "retained_case": "CASE-SGP-26-27-0301"
+    },
+    {
+      "n": 2,
+      "invoice_id": "RPL-02",
+      "invoice_no": "KST/26-27/0288",
+      "arrived_on": "2026-07-10",
+      "vendor_name": "Krishna Steel Traders",
+      "total": 150945.6,
+      "exception_codes": [
+        "PRICE_VARIANCE"
+      ],
+      "recorded": {
+        "decision": "approve_with_conditions",
+        "reviewer": "Priya Nair",
+        "reason": "Clause 7.2 of rate contract RC-KST-2026 allows JPC index escalation up to 5%. Procurement confirmed the index rise, so 3.4% is allowed."
+      },
+      "with_memory": {
+        "action": "hold",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Price variance exceeds tolerance",
+        "error": false,
+        "agreed": false
+      },
+      "without_memory": {
+        "action": "hold",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Price variance exceeds tolerance, requiring review",
+        "error": false,
+        "agreed": false
+      },
+      "memory": {
+        "precedent_count": 0,
+        "status": "none",
+        "strength": "No direct precedent",
+        "precedents": []
+      },
+      "retained_case": "CASE-KST-26-27-0288"
+    },
+    {
+      "n": 3,
+      "invoice_id": "RPL-03",
+      "invoice_no": "DCC/26-27/0198",
+      "arrived_on": "2026-07-16",
+      "vendor_name": "Deccan Cold Chain Logistics Pvt Ltd",
+      "total": 43120.0,
+      "exception_codes": [
+        "MISSING_PO"
+      ],
+      "recorded": {
+        "decision": "approve_with_conditions",
+        "reviewer": "Arjun Menon",
+        "reason": "Emergency reefer trip during the cold room breakdown. Plant head Sunita Rao gave written retro approval and the rate matches earlier trips."
+      },
+      "with_memory": {
+        "action": "hold",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Missing PO requires cost centre owner approval",
+        "error": false,
+        "agreed": false
+      },
+      "without_memory": {
+        "action": "hold",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Missing PO requires cost centre owner approval",
+        "error": false,
+        "agreed": false
+      },
+      "memory": {
+        "precedent_count": 0,
+        "status": "none",
+        "strength": "No direct precedent",
+        "precedents": []
+      },
+      "retained_case": "CASE-DCC-26-27-0198"
+    },
+    {
+      "n": 4,
+      "invoice_id": "RPL-04",
+      "invoice_no": "SBE/26-27/0166",
+      "arrived_on": "2026-07-23",
+      "vendor_name": "Sai Balaji Electricals",
+      "total": 18467.0,
+      "exception_codes": [
+        "GST_MISMATCH"
+      ],
+      "recorded": {
+        "decision": "reject",
+        "reviewer": "Arjun Menon",
+        "reason": "Pune to Pune supply must carry CGST plus SGST. Wrong tax head blocks input tax credit, so we asked for a credit note and a corrected invoice."
+      },
+      "with_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "IGST charged despite intra-state transaction",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "IGST charged despite intra-state transaction",
+        "error": false,
+        "agreed": true
+      },
+      "memory": {
+        "precedent_count": 0,
+        "status": "none",
+        "strength": "No direct precedent",
+        "precedents": []
+      },
+      "retained_case": "CASE-SBE-26-27-0166"
+    },
+    {
+      "n": 5,
+      "invoice_id": "RPL-05",
+      "invoice_no": "MPL/26-27/1087/R1",
+      "arrived_on": "2026-07-28",
+      "vendor_name": "Mehta Printers & Labels",
+      "total": 51566.0,
+      "exception_codes": [
+        "DUPLICATE_SUSPECTED",
+        "QTY_EXCEEDS_PO"
+      ],
+      "recorded": {
+        "decision": "reject",
+        "reviewer": "Priya Nair",
+        "reason": "Resubmitted copy of MPL/26-27/1087, which is already paid. The vendor's reconciliation was lagging."
+      },
+      "with_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Invoice exceeds PO quantity and appears duplicate",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Invoice exceeds PO quantity and appears duplicate",
+        "error": false,
+        "agreed": true
+      },
+      "memory": {
+        "precedent_count": 0,
+        "status": "none",
+        "strength": "No direct precedent",
+        "precedents": []
+      },
+      "retained_case": "CASE-MPL-26-27-1087-R1"
+    },
+    {
+      "n": 6,
+      "invoice_id": "RPL-06",
+      "invoice_no": "SGP/26-27/0349",
+      "arrived_on": "2026-08-06",
+      "vendor_name": "Shree Ganesh Packaging Pvt Ltd",
+      "total": 86730.0,
+      "exception_codes": [
+        "AMOUNT_SPIKE"
+      ],
+      "recorded": {
+        "decision": "approve",
+        "reviewer": "Priya Nair",
+        "reason": "Bulk order again. The PO was amended to 2,100 boxes before dispatch and the GRN matches."
+      },
+      "with_memory": {
+        "action": "approve",
+        "precedent": "applies",
+        "cited": [
+          "CASE-SGP-26-27-0301"
+        ],
+        "reason": "Similar amount spike with PO amendment and matching GRN was previously approved",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "approve_with_conditions",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Amount spike explained by PO amendment increasing quantity",
+        "error": false,
+        "agreed": true
+      },
+      "memory": {
+        "precedent_count": 1,
+        "status": "single",
+        "strength": "Emerging pattern, 1 case",
+        "precedents": [
+          {
+            "case_id": "CASE-SGP-26-27-0301",
+            "relation": "Same vendor, same exception",
+            "decision": "approve"
+          }
+        ]
+      },
+      "retained_case": "CASE-SGP-26-27-0349"
+    },
+    {
+      "n": 7,
+      "invoice_id": "RPL-07",
+      "invoice_no": "AAS/26-27/0295",
+      "arrived_on": "2026-08-11",
+      "vendor_name": "Annapurna Agro Suppliers",
+      "total": 551250.0,
+      "exception_codes": [
+        "APPROVAL_CFO",
+        "BANK_DETAILS_CHANGED",
+        "INVOICE_TEXT_RED_FLAG"
+      ],
+      "recorded": {
+        "decision": "reject",
+        "reviewer": "Priya Nair",
+        "reason": "Call-back on the vendor master number confirmed Annapurna has not changed banks. The email came from a look-alike domain and was reported to IT security."
+      },
+      "with_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "High-severity bank detail change flagged as fraud",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "High-severity bank detail change flagged as fraud",
+        "error": false,
+        "agreed": true
+      },
+      "memory": {
+        "precedent_count": 0,
+        "status": "none",
+        "strength": "No direct precedent",
+        "precedents": []
+      },
+      "retained_case": "CASE-AAS-26-27-0295"
+    },
+    {
+      "n": 8,
+      "invoice_id": "RPL-08",
+      "invoice_no": "KST/26-27/0331",
+      "arrived_on": "2026-08-20",
+      "vendor_name": "Krishna Steel Traders",
+      "total": 163217.6,
+      "exception_codes": [
+        "PRICE_VARIANCE"
+      ],
+      "recorded": {
+        "decision": "approve_with_conditions",
+        "reviewer": "Priya Nair",
+        "reason": "3.8% is within the 5% escalation cap under clause 7.2 and the JPC index sheet is attached."
+      },
+      "with_memory": {
+        "action": "approve_with_conditions",
+        "precedent": "applies",
+        "cited": [
+          "CASE-KST-26-27-0288"
+        ],
+        "reason": "price variance 3.78% exceeds tolerance but below 5% threshold, similar to prior approved case",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "hold",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Price variance exceeds tolerance, requiring further review",
+        "error": false,
+        "agreed": false
+      },
+      "memory": {
+        "precedent_count": 1,
+        "status": "single",
+        "strength": "Emerging pattern, 1 case",
+        "precedents": [
+          {
+            "case_id": "CASE-KST-26-27-0288",
+            "relation": "Same vendor, same exception",
+            "decision": "approve_with_conditions"
+          }
+        ]
+      },
+      "retained_case": "CASE-KST-26-27-0331"
+    },
+    {
+      "n": 9,
+      "invoice_id": "RPL-09",
+      "invoice_no": "DCC/26-27/0224",
+      "arrived_on": "2026-08-27",
+      "vendor_name": "Deccan Cold Chain Logistics Pvt Ltd",
+      "total": 43120.0,
+      "exception_codes": [
+        "MISSING_PO"
+      ],
+      "recorded": {
+        "decision": "approve_with_conditions",
+        "reviewer": "Arjun Menon",
+        "reason": "Second ad-hoc reefer trip this quarter. Plant head gave retro approval again; asked procurement to set up a rate contract."
+      },
+      "with_memory": {
+        "action": "approve_with_conditions",
+        "precedent": "applies",
+        "cited": [
+          "CASE-DCC-26-27-0198"
+        ],
+        "reason": "Similar missing PO case was approved with conditions requiring retro PO",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "hold",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Missing PO requires cost centre owner approval",
+        "error": false,
+        "agreed": false
+      },
+      "memory": {
+        "precedent_count": 1,
+        "status": "single",
+        "strength": "Emerging pattern, 1 case",
+        "precedents": [
+          {
+            "case_id": "CASE-DCC-26-27-0198",
+            "relation": "Same vendor, same exception",
+            "decision": "approve_with_conditions"
+          }
+        ]
+      },
+      "retained_case": "CASE-DCC-26-27-0224"
+    },
+    {
+      "n": 10,
+      "invoice_id": "RPL-10",
+      "invoice_no": "PIS/26-27/0371",
+      "arrived_on": "2026-09-03",
+      "vendor_name": "Pawar Industrial Supplies",
+      "total": 51330.0,
+      "exception_codes": [
+        "GST_MISMATCH"
+      ],
+      "recorded": {
+        "decision": "reject",
+        "reviewer": "Arjun Menon",
+        "reason": "Intra-state supply billed with IGST, same problem as Sai Balaji in July. Rejected and asked for a corrected invoice with CGST and SGST."
+      },
+      "with_memory": {
+        "action": "reject",
+        "precedent": "applies",
+        "cited": [
+          "CASE-SBE-26-27-0166"
+        ],
+        "reason": "GST mismatch error similar to prior rejected case",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "IGST charged despite intra-state transaction causing GST mismatch",
+        "error": false,
+        "agreed": true
+      },
+      "memory": {
+        "precedent_count": 1,
+        "status": "single",
+        "strength": "Related cases only, from other vendors",
+        "precedents": [
+          {
+            "case_id": "CASE-SBE-26-27-0166",
+            "relation": "Same exception, different vendor",
+            "decision": "reject"
+          }
+        ]
+      },
+      "retained_case": "CASE-PIS-26-27-0371"
+    },
+    {
+      "n": 11,
+      "invoice_id": "RPL-11",
+      "invoice_no": "SGP/26-27/0396",
+      "arrived_on": "2026-09-10",
+      "vendor_name": "Shree Ganesh Packaging Pvt Ltd",
+      "total": 82600.0,
+      "exception_codes": [
+        "AMOUNT_SPIKE",
+        "QTY_EXCEEDS_PO",
+        "QTY_EXCEEDS_RECEIPT"
+      ],
+      "recorded": {
+        "decision": "hold",
+        "reviewer": "Priya Nair",
+        "reason": "Unlike the earlier bulk orders there is no PO amendment and stores received only 1,200 boxes. Held and asked the vendor for a revised invoice."
+      },
+      "with_memory": {
+        "action": "reject",
+        "precedent": "applies",
+        "cited": [
+          "CASE-MPL-26-27-1087-R1"
+        ],
+        "reason": "Quantity exceeds PO and receipt with no amendment, matching prior reject case",
+        "error": false,
+        "agreed": false
+      },
+      "without_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Invoice quantity exceeds PO and receipt limits with high severity flags",
+        "error": false,
+        "agreed": false
+      },
+      "memory": {
+        "precedent_count": 3,
+        "status": "multiple",
+        "strength": "Emerging pattern, 2 cases",
+        "precedents": [
+          {
+            "case_id": "CASE-SGP-26-27-0301",
+            "relation": "Same vendor, same exception",
+            "decision": "approve"
+          },
+          {
+            "case_id": "CASE-SGP-26-27-0349",
+            "relation": "Same vendor, same exception",
+            "decision": "approve"
+          },
+          {
+            "case_id": "CASE-MPL-26-27-1087-R1",
+            "relation": "Same exception, different vendor",
+            "decision": "reject"
+          }
+        ]
+      },
+      "retained_case": "CASE-SGP-26-27-0396"
+    },
+    {
+      "n": 12,
+      "invoice_id": "RPL-12",
+      "invoice_no": "VIT/26-27/0098",
+      "arrived_on": "2026-09-15",
+      "vendor_name": "Vyom IT Solutions LLP",
+      "total": 59000.0,
+      "exception_codes": [
+        "BANK_DETAILS_CHANGED"
+      ],
+      "recorded": {
+        "decision": "reject",
+        "reviewer": "Priya Nair",
+        "reason": "Bank change requested on the invoice. Call-back on the vendor master number: Vyom denied any change. Same pattern as the Annapurna attempt."
+      },
+      "with_memory": {
+        "action": "reject",
+        "precedent": "applies",
+        "cited": [
+          "CASE-AAS-26-27-0295"
+        ],
+        "reason": "Bank account on invoice differs from master, matching prior fraud rejection",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Bank account change flagged as high-severity fraud pattern",
+        "error": false,
+        "agreed": true
+      },
+      "memory": {
+        "precedent_count": 1,
+        "status": "single",
+        "strength": "Related cases only, from other vendors",
+        "precedents": [
+          {
+            "case_id": "CASE-AAS-26-27-0295",
+            "relation": "Same exception, different vendor",
+            "decision": "reject"
+          }
+        ]
+      },
+      "retained_case": "CASE-VIT-26-27-0098"
+    },
+    {
+      "n": 13,
+      "invoice_id": "RPL-13",
+      "invoice_no": "KST/26-27/0379",
+      "arrived_on": "2026-09-19",
+      "vendor_name": "Krishna Steel Traders",
+      "total": 161211.6,
+      "exception_codes": [
+        "PRICE_VARIANCE"
+      ],
+      "recorded": {
+        "decision": "reject",
+        "reviewer": "Priya Nair",
+        "reason": "6.3% is above the 5% escalation cap in clause 7.2. Rejected and asked for a revised invoice at the capped rate."
+      },
+      "with_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Price variance 6.30% exceeds 5% cap, requiring rejection",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Price variance exceeds tolerance",
+        "error": false,
+        "agreed": true
+      },
+      "memory": {
+        "precedent_count": 2,
+        "status": "multiple",
+        "strength": "Emerging pattern, 2 cases",
+        "precedents": [
+          {
+            "case_id": "CASE-KST-26-27-0288",
+            "relation": "Same vendor, same exception",
+            "decision": "approve_with_conditions"
+          },
+          {
+            "case_id": "CASE-KST-26-27-0331",
+            "relation": "Same vendor, same exception",
+            "decision": "approve_with_conditions"
+          }
+        ]
+      },
+      "retained_case": "CASE-KST-26-27-0379"
+    },
+    {
+      "n": 14,
+      "invoice_id": "RPL-14",
+      "invoice_no": "SBE/26-27/0207/R1",
+      "arrived_on": "2026-09-22",
+      "vendor_name": "Sai Balaji Electricals",
+      "total": 22915.6,
+      "exception_codes": [
+        "DUPLICATE_SUSPECTED",
+        "QTY_EXCEEDS_PO"
+      ],
+      "recorded": {
+        "decision": "reject",
+        "reviewer": "Arjun Menon",
+        "reason": "Copy of SBE/26-27/0207, already paid on the original. Same resubmission pattern as Mehta Printers in July."
+      },
+      "with_memory": {
+        "action": "reject",
+        "precedent": "applies",
+        "cited": [
+          "CASE-MPL-26-27-1087-R1"
+        ],
+        "reason": "Both quantity over PO and duplicate invoice trigger rejection as in prior case",
+        "error": false,
+        "agreed": true
+      },
+      "without_memory": {
+        "action": "reject",
+        "precedent": "none",
+        "cited": [],
+        "reason": "Quantity exceeds PO and duplicate invoice detected",
+        "error": false,
+        "agreed": true
+      },
+      "memory": {
+        "precedent_count": 2,
+        "status": "multiple",
+        "strength": "Related cases only, from other vendors",
+        "precedents": [
+          {
+            "case_id": "CASE-MPL-26-27-1087-R1",
+            "relation": "Same exception, different vendor",
+            "decision": "reject"
+          },
+          {
+            "case_id": "CASE-SGP-26-27-0396",
+            "relation": "Same exception, different vendor",
+            "decision": "hold"
+          }
+        ]
+      },
+      "retained_case": "CASE-SBE-26-27-0207-R1"
+    }
+  ],
+  "total": 14,
+  "model": "openai/gpt-oss-120b",
+  "bank_id": "precedent-ap-demo-replay",
+  "started_at": "2026-09-29T05:56:56+00:00",
+  "finished_at": "2026-09-29T05:58:10+00:00",
+  "error": null,
+  "current": null
+}

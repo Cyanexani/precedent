@@ -25,6 +25,7 @@ class Settings:
     hindsight_api_key: str
     hindsight_bank_id: str
     cors_origins: list[str]
+    public_demo: bool = False
 
     @property
     def missing(self) -> list[str]:
@@ -45,4 +46,5 @@ def get_settings() -> Settings:
         hindsight_api_key=os.getenv("HINDSIGHT_API_KEY", "").strip(),
         hindsight_bank_id=os.getenv("HINDSIGHT_BANK_ID", "precedent-ap").strip(),
         cors_origins=[o.strip() for o in os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",") if o.strip()],
+        public_demo=os.getenv("PUBLIC_DEMO", "").strip().lower() in ("1", "true", "yes"),
     )

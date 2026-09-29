@@ -30,6 +30,8 @@ from .rules import run_checks
 log = logging.getLogger("precedent.replay")
 
 RESULT_FILE = Path(__file__).resolve().parent.parent / "data" / "runtime" / "replay_latest.json"
+# A real run, committed so a fresh deployment has something to show before its first run.
+SAMPLE_FILE = Path(__file__).resolve().parent.parent / "data" / "replay_sample.json"
 ACTION_CLASS = {"approve": "approve", "approve_with_conditions": "approve", "hold": "hold", "escalate": "hold", "reject": "reject"}
 
 
@@ -72,17 +74,23 @@ class ReplayRunner:
 
     @staticmethod
     def _load() -> dict | None:
-        try:
-            data = json.loads(RESULT_FILE.read_text(encoding="utf-8"))
+        for f in (RESULT_FILE, SAMPLE_FILE):
+            try:
+                data = json.loads(f.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                continue
             if data.get("status") == "running":  # a run interrupted by a restart
                 data["status"] = "interrupted"
+            data["source"] = "saved sample" if f == SAMPLE_FILE else "latest run"
             return data
-        except (OSError, ValueError):
-            return None
+        return None
 
     def _save(self) -> None:
-        RESULT_FILE.parent.mkdir(parents=True, exist_ok=True)
-        RESULT_FILE.write_text(json.dumps(self.state, indent=2), encoding="utf-8")
+        try:
+            RESULT_FILE.parent.mkdir(parents=True, exist_ok=True)
+            RESULT_FILE.write_text(json.dumps(self.state, indent=2), encoding="utf-8")
+        except OSError as e:  # read-only filesystems on serverless hosts
+            log.warning("could not save replay result: %s", e)
 
     def snapshot(self) -> dict:
         return {**self.state, "summary": summarise(self.state.get("steps", []))}

@@ -95,7 +95,7 @@ function AgreementChart({ steps, cumulative }) {
   );
 }
 
-export default function ReplayView({ onFinished }) {
+export default function ReplayView({ onFinished, publicDemo }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [starting, setStarting] = useState(false);
@@ -161,9 +161,15 @@ export default function ReplayView({ onFinished }) {
               {data.model ? `Model ${data.model}, bank ${data.bank_id}.` : "No run yet."}
             </p>
           )}
-          <button className="btn btn-memory mt" disabled={running || starting} onClick={start}>
-            {running ? "Replay running" : starting ? "Starting" : steps.length ? "Run the replay again" : "Run the replay"}
-          </button>
+          {publicDemo ? (
+            <p className="tiny">
+              {data.source === "saved sample" ? "This is a saved run. " : ""}New runs are turned off on the public demo because each run makes 28 model calls. Run the app locally to replay again.
+            </p>
+          ) : (
+            <button className="btn btn-memory mt" disabled={running || starting} onClick={start}>
+              {running ? "Replay running" : starting ? "Starting" : steps.length ? "Run the replay again" : "Run the replay"}
+            </button>
+          )}
           <ErrorBox error={error} />
         </div>
         {s.steps_done > 0 && (

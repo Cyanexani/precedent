@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
@@ -31,8 +31,10 @@ state: dict = {"resolutions": {}, "analyses": [], "resolved_events": []}
 ACTION_CLASS = {"approve": "approve", "approve_with_conditions": "approve", "hold": "hold", "escalate": "hold", "reject": "reject"}
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
+def init_state() -> None:
+    """Build the services once. Called from lifespan, and lazily per request on hosts without lifespan events."""
+    if "agent" in state:
+        return
     settings = get_settings()
     store = get_store()
     memory = MemoryService(settings)
@@ -40,9 +42,16 @@ async def lifespan(app: FastAPI):
     state.update(settings=settings, store=store, memory=memory, agent=agent, replay=ReplayRunner(settings, store, agent))
     if settings.missing:
         log.warning("Missing configuration: %s. Copy .env.example to .env and fill it in.", ", ".join(settings.missing))
+    if settings.public_demo:
+        log.info("Public demo mode: reset, seeding, forgetting and new replay runs are disabled")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_state()
     yield
     try:
-        await memory.client.aclose()
+        await state["memory"].client.aclose()
     except Exception:
         pass
 
@@ -51,7 +60,19 @@ app = FastAPI(title="Precedent AP exception agent", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=get_settings().cors_origins, allow_methods=["*"], allow_headers=["*"])
 
 
+@app.middleware("http")
+async def ensure_state(request: Request, call_next):
+    init_state()
+    return await call_next(request)
+
+
 # ---------------------------------------------------------------- helpers
+
+
+def forbid_on_public_demo(action: str) -> None:
+    """Destructive or expensive actions are switched off on a shared public link."""
+    if state["settings"].public_demo:
+        raise HTTPException(403, f"{action} is turned off on the public demo. Run the app locally to use it.")
 
 
 def require_config() -> None:
@@ -127,7 +148,7 @@ async def health():
 async def config():
     s = state["settings"]
     return {"configured": not s.missing, "missing": s.missing, "model": s.groq_model, "bank_id": s.hindsight_bank_id,
-            "hindsight_base_url": s.hindsight_base_url, "company": state["store"].company}
+            "hindsight_base_url": s.hindsight_base_url, "company": state["store"].company, "public_demo": s.public_demo}
 
 
 @app.get("/api/invoices")
@@ -225,6 +246,7 @@ async def memory_stats():
 async def seed_history():
     """Retain the team's past resolved exceptions (the story's vendor is deliberately not among them)."""
     require_config()
+    forbid_on_public_demo("Loading team history")
     store = state["store"]
     cases = [{**c, "vendor_name": store.vendors[c["vendor_id"]]["name"], "source": "team_history"}
              for c in store.historical_cases]
@@ -240,6 +262,7 @@ async def seed_history():
 @app.post("/api/memory/reset")
 async def memory_reset():
     require_config()
+    forbid_on_public_demo("Resetting memory")
     try:
         out = await state["memory"].reset()
     except Exception as e:
@@ -268,6 +291,7 @@ async def replay_state():
 @app.post("/api/replay/start")
 async def replay_start():
     require_config()
+    forbid_on_public_demo("Running a new replay")
     started = state["replay"].start()
     return {"started": started, **state["replay"].snapshot()}
 
@@ -313,6 +337,7 @@ async def memory_ledger():
 @app.delete("/api/memory/documents/{document_id}")
 async def memory_forget(document_id: str):
     require_config()
+    forbid_on_public_demo("Forgetting memories")
     try:
         out = await state["memory"].forget(document_id)
     except Exception as e:

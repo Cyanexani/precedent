@@ -139,6 +139,14 @@ Open http://localhost:5173.
 
 Single process: run `npm run build` in `frontend`, then start only the backend. FastAPI serves `frontend/dist` at http://localhost:8000.
 
+## Deploy
+
+Both options share one Hindsight bank with your local setup if you use the same `HINDSIGHT_BANK_ID`. Set `PUBLIC_DEMO=true` on any public link: reset, seeding, forgetting and new replay runs are then refused, so visitors cannot wipe the shared memory or burn model credits. The replay page shows the saved run in `backend/data/replay_sample.json` until a new run exists.
+
+**Render (whole app, one container).** New, then Blueprint, pick this repo. Render reads `render.yaml`, builds the `Dockerfile` (React build plus FastAPI) and asks for `GROQ_API_KEY` and `HINDSIGHT_API_KEY`. The free plan sleeps when idle, so the first request after a pause takes about a minute.
+
+**Vercel (static frontend plus a Python function).** Add New, then Project, import this repo, leave the root directory as is, and add `GROQ_API_KEY`, `HINDSIGHT_API_KEY`, `HINDSIGHT_BANK_ID=precedent-ap-demo` and `PUBLIC_DEMO=true` under Environment Variables. `vercel.json` builds `frontend/` and routes `/api/*` to `api/index.py`. Serverless functions cannot run the minute-long replay in the background, so replay runs stay local.
+
 ## Demo script
 
 1. Click **Reset memory**, then **Load team history**.

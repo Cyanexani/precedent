@@ -180,7 +180,7 @@ function TeachMemory({ vendors, reviewer, onSaved }) {
   );
 }
 
-function Ledger({ rows, onForget, loading, error, onRetry }) {
+function Ledger({ rows, onForget, loading, error, onRetry, canForget }) {
   return (
     <Card title="What the agent remembers" subtitle="Every document in the Hindsight bank. Forgetting one deletes it and every fact extracted from it.">
       <ErrorBox error={error} onRetry={onRetry} />
@@ -200,7 +200,7 @@ function Ledger({ rows, onForget, loading, error, onRetry }) {
                   <td className="small">{r.reviewer ? r.reviewer.replace(/-/g, " ") : ""}</td>
                   <td className="num">{r.memory_units}</td>
                   <td className="small">{day(r.updated_at)}</td>
-                  <td><button className="link-btn danger" onClick={() => onForget(r.id)}>Forget</button></td>
+                  <td>{canForget && <button className="link-btn danger" onClick={() => onForget(r.id)}>Forget</button>}</td>
                 </tr>
               ))}
             </tbody>
@@ -211,7 +211,7 @@ function Ledger({ rows, onForget, loading, error, onRetry }) {
   );
 }
 
-export default function MemoryView({ reviewer, vendors, onMemoryChanged }) {
+export default function MemoryView({ reviewer, vendors, onMemoryChanged, publicDemo }) {
   const [metrics, setMetrics] = useState(null);
   const [rows, setRows] = useState(null);
   const [ledgerError, setLedgerError] = useState(null);
@@ -245,7 +245,7 @@ export default function MemoryView({ reviewer, vendors, onMemoryChanged }) {
           <TeachMemory vendors={vendors} reviewer={reviewer} onSaved={() => { loadAll(); onMemoryChanged(); }} />
         </div>
         <div className="col">
-          <Ledger rows={rows} onForget={forget} loading={loading && !rows} error={ledgerError} onRetry={loadAll} />
+          <Ledger rows={rows} onForget={forget} loading={loading && !rows} error={ledgerError} onRetry={loadAll} canForget={!publicDemo} />
         </div>
       </div>
     </div>
