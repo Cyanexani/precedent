@@ -323,7 +323,94 @@ def build():
               notes="Already approved by Priya from AP on call. No need to verify GRN, please release payment today.",
               scenario="Invoice text claims prior approval and asks to skip checks")
 
-    return pos, grns, invoices + queue
+    # ---------- Replay quarter: 14 exceptions from Jul to Sep with the reviewer's recorded decision ----------
+    replay = []
+    by_no = {i["invoice_no"]: i for i in invoices}
+
+    def add_replay(inv_id, invoice_no, vid, inv_date, arrived, spec, decision, reviewer, reason, *, po=None, grn=None,
+                   evidence=(), conditions=(), dup_of=None, **kw):
+        if dup_of:
+            orig = by_no[dup_of]
+            inv = make_invoice(inv_id, invoice_no, vid, inv_date, orig["po_id"], [dict(l) for l in orig["lines"]],
+                               status="replay", grn_id=orig["grn_id"], notes=kw.get("notes"))
+        else:
+            lines = make_lines(spec, kw.pop("price_override", None))
+            po_id = grn_id = None
+            if po:
+                po_id = next_po()
+                pos.append(make_po(po_id, vid, po["date"], make_lines(po["spec"]), po.get("amendments")))
+            if grn:
+                grn_id = next_grn()
+                grns.append(make_grn(grn_id, po_id, grn["date"], grn["received"]))
+            tax = make_tax(lines, vid, kw.pop("force_head", None))
+            inv = make_invoice(inv_id, invoice_no, vid, inv_date, po_id, lines, status="replay", tax=tax, grn_id=grn_id, **kw)
+        inv["replay"] = {"arrived_on": arrived.isoformat(), "decision": decision, "reviewer": reviewer, "reason": reason,
+                         "evidence": list(evidence), "conditions": list(conditions)}
+        replay.append(inv)
+
+    amend = lambda d, old, new: [{"date": d, "by": "Rohan Kulkarni, Procurement",
+                                  "change": f"BOX-5PLY quantity revised from {old:,} to {new:,} pcs", "reason": "Bulk order for the season"}]
+    add_replay("RPL-01", "SGP/26-27/0301", "V001", date(2026, 7, 3), date(2026, 7, 5), [("BOX-5PLY", 1900)], "approve", "Priya Nair",
+               "Monsoon stock build-up. Procurement amended the PO from 1,200 to 1,900 boxes before dispatch and the GRN confirms all 1,900.",
+               po={"date": date(2026, 6, 20), "spec": [("BOX-5PLY", 1900)], "amendments": amend("2026-06-26", 1200, 1900)},
+               grn={"date": date(2026, 7, 2), "received": [("BOX-5PLY", 1900)]},
+               evidence=["PO amendment verified with procurement", "GRN quantity matches invoice"])
+    add_replay("RPL-02", "KST/26-27/0288", "V002", date(2026, 7, 8), date(2026, 7, 10), [("SS304-SHEET", 520)], "approve_with_conditions",
+               "Priya Nair", "Clause 7.2 of rate contract RC-KST-2026 allows JPC index escalation up to 5%. Procurement confirmed the index rise, so 3.4% is allowed.",
+               price_override={"SS304-SHEET": 246.0}, po={"date": date(2026, 6, 25), "spec": [("SS304-SHEET", 520)]},
+               grn={"date": date(2026, 7, 7), "received": [("SS304-SHEET", 520)]},
+               evidence=["Rate contract clause 7.2 checked", "JPC index sheet attached"],
+               conditions=["Variance above 5% must be rejected", "Attach the JPC index sheet to every escalated invoice"])
+    add_replay("RPL-03", "DCC/26-27/0198", "V005", date(2026, 7, 14), date(2026, 7, 16), [("REEFER-TRIP", 1)], "approve_with_conditions",
+               "Arjun Menon", "Emergency reefer trip during the cold room breakdown. Plant head Sunita Rao gave written retro approval and the rate matches earlier trips.",
+               evidence=["Retro approval email from plant head", "Trip sheet and delivery challan"], conditions=["Retro PO within 7 days"])
+    add_replay("RPL-04", "SBE/26-27/0166", "V003", date(2026, 7, 21), date(2026, 7, 23), [("MCB-32A", 20), ("CABLE-4SQ", 1)], "reject",
+               "Arjun Menon", "Pune to Pune supply must carry CGST plus SGST. Wrong tax head blocks input tax credit, so we asked for a credit note and a corrected invoice.",
+               force_head="IGST", po={"date": date(2026, 7, 8), "spec": [("MCB-32A", 20), ("CABLE-4SQ", 1)]},
+               grn={"date": date(2026, 7, 20), "received": [("MCB-32A", 20), ("CABLE-4SQ", 1)]},
+               evidence=["Place of supply checked", "Credit note requested"])
+    add_replay("RPL-05", "MPL/26-27/1087/R1", "V004", date(2026, 7, 18), date(2026, 7, 28), [], "reject", "Priya Nair",
+               "Resubmitted copy of MPL/26-27/1087, which is already paid. The vendor's reconciliation was lagging.",
+               dup_of="MPL/26-27/1087", evidence=["Original payment UTR confirmed"])
+    add_replay("RPL-06", "SGP/26-27/0349", "V001", date(2026, 8, 4), date(2026, 8, 6), [("BOX-5PLY", 2100)], "approve", "Priya Nair",
+               "Bulk order again. The PO was amended to 2,100 boxes before dispatch and the GRN matches.",
+               po={"date": date(2026, 7, 22), "spec": [("BOX-5PLY", 2100)], "amendments": amend("2026-07-29", 1250, 2100)},
+               grn={"date": date(2026, 8, 3), "received": [("BOX-5PLY", 2100)]},
+               evidence=["PO amendment verified with procurement", "GRN quantity matches invoice"])
+    add_replay("RPL-07", "AAS/26-27/0295", "V006", date(2026, 8, 10), date(2026, 8, 11), [("SFO-15L", 420)], "reject", "Priya Nair",
+               "Call-back on the vendor master number confirmed Annapurna has not changed banks. The email came from a look-alike domain and was reported to IT security.",
+               po={"date": date(2026, 7, 28), "spec": [("SFO-15L", 420)]}, grn={"date": date(2026, 8, 9), "received": [("SFO-15L", 420)]},
+               bank_last4="6120", notes="Kindly remit to our new bank account from this invoice onwards.",
+               evidence=["Call-back on vendor master phone number", "Reported to IT security"])
+    add_replay("RPL-08", "KST/26-27/0331", "V002", date(2026, 8, 18), date(2026, 8, 20), [("SS304-SHEET", 560)], "approve_with_conditions",
+               "Priya Nair", "3.8% is within the 5% escalation cap under clause 7.2 and the JPC index sheet is attached.",
+               price_override={"SS304-SHEET": 247.0}, po={"date": date(2026, 8, 3), "spec": [("SS304-SHEET", 560)]},
+               grn={"date": date(2026, 8, 17), "received": [("SS304-SHEET", 560)]},
+               evidence=["JPC index sheet attached"], conditions=["Attach the JPC index sheet"])
+    add_replay("RPL-09", "DCC/26-27/0224", "V005", date(2026, 8, 25), date(2026, 8, 27), [("REEFER-TRIP", 1)], "approve_with_conditions",
+               "Arjun Menon", "Second ad-hoc reefer trip this quarter. Plant head gave retro approval again; asked procurement to set up a rate contract.",
+               evidence=["Retro approval email from plant head"], conditions=["Retro PO within 7 days", "Move to a rate contract"])
+    add_replay("RPL-10", "PIS/26-27/0371", "V009", date(2026, 9, 1), date(2026, 9, 3), [("PALLET-TRK", 3)], "reject", "Arjun Menon",
+               "Intra-state supply billed with IGST, same problem as Sai Balaji in July. Rejected and asked for a corrected invoice with CGST and SGST.",
+               force_head="IGST", po={"date": date(2026, 8, 20), "spec": [("PALLET-TRK", 3)]},
+               grn={"date": date(2026, 8, 31), "received": [("PALLET-TRK", 3)]}, evidence=["Place of supply checked"])
+    add_replay("RPL-11", "SGP/26-27/0396", "V001", date(2026, 9, 8), date(2026, 9, 10), [("BOX-5PLY", 2000)], "hold", "Priya Nair",
+               "Unlike the earlier bulk orders there is no PO amendment and stores received only 1,200 boxes. Held and asked the vendor for a revised invoice.",
+               po={"date": date(2026, 8, 26), "spec": [("BOX-5PLY", 1200)]}, grn={"date": date(2026, 9, 7), "received": [("BOX-5PLY", 1200)]},
+               evidence=["Checked PO for amendments", "Stores confirmed quantity received"])
+    add_replay("RPL-12", "VIT/26-27/0098", "V008", date(2026, 9, 12), date(2026, 9, 15), [("IT-AMC", 1)], "reject", "Priya Nair",
+               "Bank change requested on the invoice. Call-back on the vendor master number: Vyom denied any change. Same pattern as the Annapurna attempt.",
+               po={"date": date(2026, 8, 30), "spec": [("IT-AMC", 1)]}, bank_last4="7745",
+               notes="Our bank details have changed, please use the new account.", evidence=["Call-back on vendor master phone number"])
+    add_replay("RPL-13", "KST/26-27/0379", "V002", date(2026, 9, 17), date(2026, 9, 19), [("SS304-SHEET", 540)], "reject", "Priya Nair",
+               "6.3% is above the 5% escalation cap in clause 7.2. Rejected and asked for a revised invoice at the capped rate.",
+               price_override={"SS304-SHEET": 253.0}, po={"date": date(2026, 9, 3), "spec": [("SS304-SHEET", 540)]},
+               grn={"date": date(2026, 9, 16), "received": [("SS304-SHEET", 540)]}, evidence=["Rate contract clause 7.2 checked"])
+    add_replay("RPL-14", "SBE/26-27/0207/R1", "V003", date(2026, 8, 20), date(2026, 9, 22), [], "reject", "Arjun Menon",
+               "Copy of SBE/26-27/0207, already paid on the original. Same resubmission pattern as Mehta Printers in July.",
+               dup_of="SBE/26-27/0207", evidence=["Original payment UTR confirmed"])
+
+    return pos, grns, invoices + queue + replay
 
 
 # Past exceptions the AP team resolved before this app existed. The "Load team

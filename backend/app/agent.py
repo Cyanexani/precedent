@@ -19,7 +19,7 @@ from groq import AsyncGroq, BadRequestError
 from .config import Settings
 from .data_store import DataStore
 from .memory import MemoryService, exc_tag, vendor_tag
-from .rules import approval_requirement, run_checks, vendor_baseline
+from .rules import approval_requirement, review_facts, run_checks, vendor_baseline
 
 log = logging.getLogger("precedent.agent")
 
@@ -59,6 +59,13 @@ When you are done, reply with ONLY a JSON object with exactly these keys:
   "checklist": ["concrete verification step for the reviewer"],
   "memory_influence": "one sentence on how memory changed your recommendation, or 'No memory was used.'"
 }"""
+
+PREDICT_PROMPT = """You are an accounts payable exception analyst at an Indian company. Predict the decision the AP reviewer will record for this invoice.
+Rules:
+1. RULE_CHECKS and FACTS are computed by code and are correct.
+2. PAST_CASES come from the team's memory. Cite only those case_ids. If PAST_CASES is empty there is no precedent; decide from the rule checks alone.
+3. A past case applies only when the facts that justified its decision are also present now. When it applies, follow how the team handled that exception type, including rejecting rather than holding if that is what they did.
+Reply with only a JSON object: {"action": "approve | approve_with_conditions | hold | reject", "precedent": "none | applies | does_not_apply", "cited": ["CASE-..."], "reason": "one short sentence"}"""
 
 TOOLS = [
     {"type": "function", "function": {
@@ -168,6 +175,8 @@ class Agent:
         self.store = store
         self.memory = memory
         self.llm = AsyncGroq(api_key=settings.groq_api_key) if settings.groq_api_key else None
+        # the replay makes many calls in a row, so it waits out rate limits instead of failing
+        self.llm_patient = AsyncGroq(api_key=settings.groq_api_key, max_retries=10) if settings.groq_api_key else None
 
     # ------------------------------------------------------------------ tools
 
@@ -334,6 +343,39 @@ class Agent:
         if "gpt-oss" in self.settings.groq_model:
             kwargs["reasoning_effort"] = "medium"
         return await self.llm.chat.completions.create(**kwargs)
+
+    async def predict(self, analysis: dict, memory: dict | None) -> dict:
+        """One compact call: the reviewer's likely decision. Used by the quarter replay to keep token use low."""
+        past = [] if not memory else [
+            {"case_id": p["case_id"], "relation": p["relation_label"], "decision": p["decision"],
+             "facts": [f[:260] for f in p["facts"][:3]]} for p in memory["precedents"][:4]]
+        payload = {
+            "invoice": {"invoice_no": analysis["invoice"]["invoice_no"], "vendor": analysis["vendor"]["name"],
+                        "total": analysis["invoice"]["total"], "notes": analysis["invoice"].get("notes")},
+            "RULE_CHECKS": [{"code": f["code"], "severity": f["severity"], "detail": f["detail"][:260]}
+                            for f in analysis["findings"] if f["severity"] != "info"],
+            "FACTS": review_facts(analysis),
+            "PAST_CASES": past,
+        }
+        allowed = {p["case_id"] for p in past}
+        try:
+            resp = await self.llm_patient.chat.completions.create(
+                model=self.settings.groq_model, temperature=0, max_completion_tokens=700,
+                response_format={"type": "json_object"},
+                messages=[{"role": "system", "content": PREDICT_PROMPT},
+                          {"role": "user", "content": json.dumps(payload, default=str)}],
+                **({"reasoning_effort": "low"} if "gpt-oss" in self.settings.groq_model else {}))
+            out = _parse_json(resp.choices[0].message.content) or {}
+        except Exception as e:
+            log.warning("predict failed: %s", e)
+            out = {"action": "hold", "precedent": "none", "cited": [], "reason": f"Model call failed: {e}"[:200], "error": True}
+        action = out.get("action") if out.get("action") in ACTIONS else "hold"
+        cited = [c for c in out.get("cited") or [] if c in allowed]
+        precedent = out.get("precedent") if out.get("precedent") in ("none", "applies", "does_not_apply") else "none"
+        if not cited:
+            precedent = "none"
+        return {"action": action, "precedent": precedent, "cited": cited,
+                "reason": _clean(str(out.get("reason") or ""))[:300], "error": bool(out.get("error"))}
 
     # ------------------------------------------------------------------ guardrails
 

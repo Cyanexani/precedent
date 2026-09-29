@@ -43,6 +43,10 @@ class DataStore:
     def pending_invoices(self) -> list[dict]:
         return [i for i in self.invoices.values() if i["status"] == "pending"]
 
+    def replay_invoices(self) -> list[dict]:
+        return sorted((i for i in self.invoices.values() if i["status"] == "replay"),
+                      key=lambda i: i["replay"]["arrived_on"])
+
     def paid_invoices_for_vendor(self, vendor_id: str) -> list[dict]:
         return sorted(
             (i for i in self.invoices.values() if i["vendor_id"] == vendor_id and i["status"] == "paid"),

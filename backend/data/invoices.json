@@ -1601,5 +1601,672 @@
     "paid_on": null,
     "notes": "Already approved by Priya from AP on call. No need to verify GRN, please release payment today.",
     "scenario": "Invoice text claims prior approval and asks to skip checks"
+  },
+  {
+    "id": "RPL-01",
+    "invoice_no": "SGP/26-27/0301",
+    "vendor_id": "V001",
+    "invoice_date": "2026-07-03",
+    "received_date": "2026-07-05",
+    "po_id": "NF/PO/26-27/1001",
+    "grn_id": "NF/GRN/26-27/0770",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1900,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 66500.0
+      }
+    ],
+    "tax": {
+      "cgst": 5985.0,
+      "sgst": 5985.0,
+      "igst": 0.0
+    },
+    "subtotal": 66500.0,
+    "tax_total": 11970.0,
+    "total": 78470.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-08-02",
+    "bank_account_last4": "4417",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-07-05",
+      "decision": "approve",
+      "reviewer": "Priya Nair",
+      "reason": "Monsoon stock build-up. Procurement amended the PO from 1,200 to 1,900 boxes before dispatch and the GRN confirms all 1,900.",
+      "evidence": [
+        "PO amendment verified with procurement",
+        "GRN quantity matches invoice"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-02",
+    "invoice_no": "KST/26-27/0288",
+    "vendor_id": "V002",
+    "invoice_date": "2026-07-08",
+    "received_date": "2026-07-10",
+    "po_id": "NF/PO/26-27/1008",
+    "grn_id": "NF/GRN/26-27/0775",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 520,
+        "unit_price": 246.0,
+        "gst_rate": 18,
+        "amount": 127920.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 23025.6
+    },
+    "subtotal": 127920.0,
+    "tax_total": 23025.6,
+    "total": 150945.6,
+    "payment_terms": "NET45",
+    "due_date": "2026-08-22",
+    "bank_account_last4": "7702",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-07-10",
+      "decision": "approve_with_conditions",
+      "reviewer": "Priya Nair",
+      "reason": "Clause 7.2 of rate contract RC-KST-2026 allows JPC index escalation up to 5%. Procurement confirmed the index rise, so 3.4% is allowed.",
+      "evidence": [
+        "Rate contract clause 7.2 checked",
+        "JPC index sheet attached"
+      ],
+      "conditions": [
+        "Variance above 5% must be rejected",
+        "Attach the JPC index sheet to every escalated invoice"
+      ]
+    }
+  },
+  {
+    "id": "RPL-03",
+    "invoice_no": "DCC/26-27/0198",
+    "vendor_id": "V005",
+    "invoice_date": "2026-07-14",
+    "received_date": "2026-07-16",
+    "po_id": null,
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12,
+        "amount": 38500.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 4620.0
+    },
+    "subtotal": 38500.0,
+    "tax_total": 4620.0,
+    "total": 43120.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-08-13",
+    "bank_account_last4": "1187",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-07-16",
+      "decision": "approve_with_conditions",
+      "reviewer": "Arjun Menon",
+      "reason": "Emergency reefer trip during the cold room breakdown. Plant head Sunita Rao gave written retro approval and the rate matches earlier trips.",
+      "evidence": [
+        "Retro approval email from plant head",
+        "Trip sheet and delivery challan"
+      ],
+      "conditions": [
+        "Retro PO within 7 days"
+      ]
+    }
+  },
+  {
+    "id": "RPL-04",
+    "invoice_no": "SBE/26-27/0166",
+    "vendor_id": "V003",
+    "invoice_date": "2026-07-21",
+    "received_date": "2026-07-23",
+    "po_id": "NF/PO/26-27/1015",
+    "grn_id": "NF/GRN/26-27/0780",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 20,
+        "unit_price": 540.0,
+        "gst_rate": 18,
+        "amount": 10800.0
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 1,
+        "unit_price": 4850.0,
+        "gst_rate": 18,
+        "amount": 4850.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 2817.0
+    },
+    "subtotal": 15650.0,
+    "tax_total": 2817.0,
+    "total": 18467.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-08-20",
+    "bank_account_last4": "2290",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-07-23",
+      "decision": "reject",
+      "reviewer": "Arjun Menon",
+      "reason": "Pune to Pune supply must carry CGST plus SGST. Wrong tax head blocks input tax credit, so we asked for a credit note and a corrected invoice.",
+      "evidence": [
+        "Place of supply checked",
+        "Credit note requested"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-05",
+    "invoice_no": "MPL/26-27/1087/R1",
+    "vendor_id": "V004",
+    "invoice_date": "2026-07-18",
+    "received_date": "2026-07-20",
+    "po_id": "NF/PO/26-27/0812",
+    "grn_id": "NF/GRN/26-27/0680",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 38,
+        "unit_price": 1150.0,
+        "gst_rate": 18,
+        "amount": 43700.0
+      }
+    ],
+    "tax": {
+      "cgst": 3933.0,
+      "sgst": 3933.0,
+      "igst": 0.0
+    },
+    "subtotal": 43700.0,
+    "tax_total": 7866.0,
+    "total": 51566.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-08-17",
+    "bank_account_last4": "6634",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-07-28",
+      "decision": "reject",
+      "reviewer": "Priya Nair",
+      "reason": "Resubmitted copy of MPL/26-27/1087, which is already paid. The vendor's reconciliation was lagging.",
+      "evidence": [
+        "Original payment UTR confirmed"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-06",
+    "invoice_no": "SGP/26-27/0349",
+    "vendor_id": "V001",
+    "invoice_date": "2026-08-04",
+    "received_date": "2026-08-06",
+    "po_id": "NF/PO/26-27/1022",
+    "grn_id": "NF/GRN/26-27/0785",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 2100,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 73500.0
+      }
+    ],
+    "tax": {
+      "cgst": 6615.0,
+      "sgst": 6615.0,
+      "igst": 0.0
+    },
+    "subtotal": 73500.0,
+    "tax_total": 13230.0,
+    "total": 86730.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-03",
+    "bank_account_last4": "4417",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-08-06",
+      "decision": "approve",
+      "reviewer": "Priya Nair",
+      "reason": "Bulk order again. The PO was amended to 2,100 boxes before dispatch and the GRN matches.",
+      "evidence": [
+        "PO amendment verified with procurement",
+        "GRN quantity matches invoice"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-07",
+    "invoice_no": "AAS/26-27/0295",
+    "vendor_id": "V006",
+    "invoice_date": "2026-08-10",
+    "received_date": "2026-08-12",
+    "po_id": "NF/PO/26-27/1029",
+    "grn_id": "NF/GRN/26-27/0790",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 420,
+        "unit_price": 1250.0,
+        "gst_rate": 5,
+        "amount": 525000.0
+      }
+    ],
+    "tax": {
+      "cgst": 13125.0,
+      "sgst": 13125.0,
+      "igst": 0.0
+    },
+    "subtotal": 525000.0,
+    "tax_total": 26250.0,
+    "total": 551250.0,
+    "payment_terms": "NET60",
+    "due_date": "2026-10-09",
+    "bank_account_last4": "6120",
+    "status": "replay",
+    "paid_on": null,
+    "notes": "Kindly remit to our new bank account from this invoice onwards.",
+    "replay": {
+      "arrived_on": "2026-08-11",
+      "decision": "reject",
+      "reviewer": "Priya Nair",
+      "reason": "Call-back on the vendor master number confirmed Annapurna has not changed banks. The email came from a look-alike domain and was reported to IT security.",
+      "evidence": [
+        "Call-back on vendor master phone number",
+        "Reported to IT security"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-08",
+    "invoice_no": "KST/26-27/0331",
+    "vendor_id": "V002",
+    "invoice_date": "2026-08-18",
+    "received_date": "2026-08-20",
+    "po_id": "NF/PO/26-27/1036",
+    "grn_id": "NF/GRN/26-27/0795",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 560,
+        "unit_price": 247.0,
+        "gst_rate": 18,
+        "amount": 138320.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 24897.6
+    },
+    "subtotal": 138320.0,
+    "tax_total": 24897.6,
+    "total": 163217.6,
+    "payment_terms": "NET45",
+    "due_date": "2026-10-02",
+    "bank_account_last4": "7702",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-08-20",
+      "decision": "approve_with_conditions",
+      "reviewer": "Priya Nair",
+      "reason": "3.8% is within the 5% escalation cap under clause 7.2 and the JPC index sheet is attached.",
+      "evidence": [
+        "JPC index sheet attached"
+      ],
+      "conditions": [
+        "Attach the JPC index sheet"
+      ]
+    }
+  },
+  {
+    "id": "RPL-09",
+    "invoice_no": "DCC/26-27/0224",
+    "vendor_id": "V005",
+    "invoice_date": "2026-08-25",
+    "received_date": "2026-08-27",
+    "po_id": null,
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12,
+        "amount": 38500.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 4620.0
+    },
+    "subtotal": 38500.0,
+    "tax_total": 4620.0,
+    "total": 43120.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-24",
+    "bank_account_last4": "1187",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-08-27",
+      "decision": "approve_with_conditions",
+      "reviewer": "Arjun Menon",
+      "reason": "Second ad-hoc reefer trip this quarter. Plant head gave retro approval again; asked procurement to set up a rate contract.",
+      "evidence": [
+        "Retro approval email from plant head"
+      ],
+      "conditions": [
+        "Retro PO within 7 days",
+        "Move to a rate contract"
+      ]
+    }
+  },
+  {
+    "id": "RPL-10",
+    "invoice_no": "PIS/26-27/0371",
+    "vendor_id": "V009",
+    "invoice_date": "2026-09-01",
+    "received_date": "2026-09-03",
+    "po_id": "NF/PO/26-27/1043",
+    "grn_id": "NF/GRN/26-27/0800",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 3,
+        "unit_price": 14500.0,
+        "gst_rate": 18,
+        "amount": 43500.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 7830.0
+    },
+    "subtotal": 43500.0,
+    "tax_total": 7830.0,
+    "total": 51330.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-01",
+    "bank_account_last4": "8841",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-09-03",
+      "decision": "reject",
+      "reviewer": "Arjun Menon",
+      "reason": "Intra-state supply billed with IGST, same problem as Sai Balaji in July. Rejected and asked for a corrected invoice with CGST and SGST.",
+      "evidence": [
+        "Place of supply checked"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-11",
+    "invoice_no": "SGP/26-27/0396",
+    "vendor_id": "V001",
+    "invoice_date": "2026-09-08",
+    "received_date": "2026-09-10",
+    "po_id": "NF/PO/26-27/1050",
+    "grn_id": "NF/GRN/26-27/0805",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 2000,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 70000.0
+      }
+    ],
+    "tax": {
+      "cgst": 6300.0,
+      "sgst": 6300.0,
+      "igst": 0.0
+    },
+    "subtotal": 70000.0,
+    "tax_total": 12600.0,
+    "total": 82600.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-08",
+    "bank_account_last4": "4417",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-09-10",
+      "decision": "hold",
+      "reviewer": "Priya Nair",
+      "reason": "Unlike the earlier bulk orders there is no PO amendment and stores received only 1,200 boxes. Held and asked the vendor for a revised invoice.",
+      "evidence": [
+        "Checked PO for amendments",
+        "Stores confirmed quantity received"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-12",
+    "invoice_no": "VIT/26-27/0098",
+    "vendor_id": "V008",
+    "invoice_date": "2026-09-12",
+    "received_date": "2026-09-14",
+    "po_id": "NF/PO/26-27/1057",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18,
+        "amount": 50000.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 9000.0
+    },
+    "subtotal": 50000.0,
+    "tax_total": 9000.0,
+    "total": 59000.0,
+    "payment_terms": "NET45",
+    "due_date": "2026-10-27",
+    "bank_account_last4": "7745",
+    "status": "replay",
+    "paid_on": null,
+    "notes": "Our bank details have changed, please use the new account.",
+    "replay": {
+      "arrived_on": "2026-09-15",
+      "decision": "reject",
+      "reviewer": "Priya Nair",
+      "reason": "Bank change requested on the invoice. Call-back on the vendor master number: Vyom denied any change. Same pattern as the Annapurna attempt.",
+      "evidence": [
+        "Call-back on vendor master phone number"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-13",
+    "invoice_no": "KST/26-27/0379",
+    "vendor_id": "V002",
+    "invoice_date": "2026-09-17",
+    "received_date": "2026-09-19",
+    "po_id": "NF/PO/26-27/1064",
+    "grn_id": "NF/GRN/26-27/0810",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 540,
+        "unit_price": 253.0,
+        "gst_rate": 18,
+        "amount": 136620.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 24591.6
+    },
+    "subtotal": 136620.0,
+    "tax_total": 24591.6,
+    "total": 161211.6,
+    "payment_terms": "NET45",
+    "due_date": "2026-11-01",
+    "bank_account_last4": "7702",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-09-19",
+      "decision": "reject",
+      "reviewer": "Priya Nair",
+      "reason": "6.3% is above the 5% escalation cap in clause 7.2. Rejected and asked for a revised invoice at the capped rate.",
+      "evidence": [
+        "Rate contract clause 7.2 checked"
+      ],
+      "conditions": []
+    }
+  },
+  {
+    "id": "RPL-14",
+    "invoice_no": "SBE/26-27/0207/R1",
+    "vendor_id": "V003",
+    "invoice_date": "2026-08-20",
+    "received_date": "2026-08-22",
+    "po_id": "NF/PO/26-27/0791",
+    "grn_id": "NF/GRN/26-27/0665",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 18,
+        "unit_price": 540.0,
+        "gst_rate": 18,
+        "amount": 9720.0
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 2,
+        "unit_price": 4850.0,
+        "gst_rate": 18,
+        "amount": 9700.0
+      }
+    ],
+    "tax": {
+      "cgst": 1747.8,
+      "sgst": 1747.8,
+      "igst": 0.0
+    },
+    "subtotal": 19420.0,
+    "tax_total": 3495.6,
+    "total": 22915.6,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-19",
+    "bank_account_last4": "2290",
+    "status": "replay",
+    "paid_on": null,
+    "notes": null,
+    "replay": {
+      "arrived_on": "2026-09-22",
+      "decision": "reject",
+      "reviewer": "Arjun Menon",
+      "reason": "Copy of SBE/26-27/0207, already paid on the original. Same resubmission pattern as Mehta Printers in July.",
+      "evidence": [
+        "Original payment UTR confirmed"
+      ],
+      "conditions": []
+    }
   }
 ]

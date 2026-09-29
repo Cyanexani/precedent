@@ -193,7 +193,7 @@ def check_duplicate(inv: dict, store: DataStore, rules: dict) -> list[Finding]:
     tol = rules["tolerances"]
     norm = normalize_invoice_no(inv["invoice_no"])
     for other in store.invoices.values():
-        if other["id"] == inv["id"] or other["vendor_id"] != inv["vendor_id"]:
+        if other["id"] == inv["id"] or other["vendor_id"] != inv["vendor_id"] or other["status"] == "replay":
             continue
         same_no = other["invoice_no"].upper() == inv["invoice_no"].upper()
         same_norm = normalize_invoice_no(other["invoice_no"]) == norm
@@ -374,3 +374,32 @@ def run_checks(store: DataStore, invoice_id: str) -> dict:
         "payment": payment,
         "approval": approval,
     }
+
+
+def review_facts(a: dict) -> list[str]:
+    """The distinguishing facts a future reviewer needs to judge whether a case is comparable."""
+    inv, po, grn = a["invoice"], a["purchase_order"], a["goods_receipt"]
+    facts = []
+    if not po:
+        facts.append("No purchase order was referenced on the invoice.")
+    else:
+        po_qty = ", ".join(f"{ln['qty']} {ln['unit']} {ln['item_code']} at Rs {ln['unit_price']}" for ln in po["lines"])
+        facts.append(f"PO {po['id']} dated {po['po_date']} covered {po_qty}.")
+        if po["amendments"]:
+            for am in po["amendments"]:
+                facts.append(f"PO amendment on record dated {am['date']} by {am['by']}: {am['change']} ({am['reason']}).")
+        else:
+            facts.append("The PO had no amendments.")
+    if grn:
+        rec = {ln["item_code"]: ln["qty_received"] for ln in grn["lines"]}
+        match = all(rec.get(ln["item_code"], 0) >= ln["qty"] for ln in inv["lines"])
+        facts.append(f"Goods receipt {grn['id']} " + ("matched the invoiced quantity." if match else
+                     "recorded less than the invoiced quantity: " + ", ".join(
+                         f"{rec.get(ln['item_code'], 0)} received vs {ln['qty']} invoiced" for ln in inv["lines"]) + "."))
+    b = a["baseline"]
+    if b["ratio"] is not None:
+        facts.append(f"Invoice total was {b['ratio']}x the vendor's 6-month median of Rs {b['median']:,.2f}.")
+    if inv.get("bank_account_last4") != a["vendor"]["bank"]["account_last4"]:
+        facts.append(f"Invoice bank account ending {inv['bank_account_last4']} differed from vendor master ending "
+                     f"{a['vendor']['bank']['account_last4']}.")
+    return facts

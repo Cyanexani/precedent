@@ -16,9 +16,11 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
 
 from .agent import Agent
+from .cases import build_case, case_id_for
 from .config import get_settings
 from .data_store import get_store
 from .memory import NOTE_KINDS, MemoryService
+from .replay import ReplayRunner
 from .rules import run_checks
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s", datefmt="%H:%M:%S")
@@ -34,7 +36,8 @@ async def lifespan(app: FastAPI):
     settings = get_settings()
     store = get_store()
     memory = MemoryService(settings)
-    state.update(settings=settings, store=store, memory=memory, agent=Agent(settings, store, memory))
+    agent = Agent(settings, store, memory)
+    state.update(settings=settings, store=store, memory=memory, agent=agent, replay=ReplayRunner(settings, store, agent))
     if settings.missing:
         log.warning("Missing configuration: %s. Copy .env.example to .env and fill it in.", ", ".join(settings.missing))
     yield
@@ -62,37 +65,6 @@ def get_invoice_or_404(invoice_id: str) -> dict:
     if not inv:
         raise HTTPException(404, f"Invoice {invoice_id} not found")
     return inv
-
-
-def case_id_for(invoice_no: str) -> str:
-    return "CASE-" + re.sub(r"[^A-Z0-9]+", "-", invoice_no.upper()).strip("-")
-
-
-def review_facts(a: dict) -> list[str]:
-    """The distinguishing facts a future reviewer needs to judge whether this case is comparable."""
-    inv, po, grn = a["invoice"], a["purchase_order"], a["goods_receipt"]
-    facts = []
-    if not po:
-        facts.append("No purchase order was referenced on the invoice.")
-    else:
-        po_qty = ", ".join(f"{ln['qty']} {ln['unit']} {ln['item_code']} at Rs {ln['unit_price']}" for ln in po["lines"])
-        facts.append(f"PO {po['id']} dated {po['po_date']} covered {po_qty}.")
-        if po["amendments"]:
-            for am in po["amendments"]:
-                facts.append(f"PO amendment on record dated {am['date']} by {am['by']}: {am['change']} ({am['reason']}).")
-        else:
-            facts.append("The PO had no amendments.")
-    if grn:
-        rec = {ln["item_code"]: ln["qty_received"] for ln in grn["lines"]}
-        match = all(rec.get(ln["item_code"], 0) >= ln["qty"] for ln in inv["lines"])
-        facts.append(f"Goods receipt {grn['id']} " + ("matched the invoiced quantity." if match else
-                     "recorded less than the invoiced quantity: " + ", ".join(f"{rec.get(ln['item_code'], 0)} received vs {ln['qty']} invoiced" for ln in inv["lines"]) + "."))
-    b = a["baseline"]
-    if b["ratio"] is not None:
-        facts.append(f"Invoice total was {b['ratio']}x the vendor's 6-month median of Rs {b['median']:,.2f}.")
-    if inv.get("bank_account_last4") != a["vendor"]["bank"]["account_last4"]:
-        facts.append(f"Invoice bank account ending {inv['bank_account_last4']} differed from vendor master ending {a['vendor']['bank']['account_last4']}.")
-    return facts
 
 
 # ---------------------------------------------------------------- models
@@ -219,28 +191,10 @@ async def resolve(invoice_id: str, body: ResolveRequest):
     inv = get_invoice_or_404(invoice_id)
     require_config()
     a = run_checks(state["store"], invoice_id)  # recomputed server side, never trusted from the client
-    exc = [f for f in a["findings"] if f["severity"] != "info"]
     now = datetime.now(timezone.utc)
-    case = {
-        "case_id": case_id_for(inv["invoice_no"]),
-        "invoice_id": inv["id"],
-        "invoice_no": inv["invoice_no"],
-        "invoice_date": inv["invoice_date"],
-        "vendor_id": inv["vendor_id"],
-        "vendor_name": a["vendor"]["name"],
-        "total": inv["total"],
-        "exception_codes": a["exception_codes"] or ["NONE"],
-        "findings_text": " ".join(f"{f['code']}: {f['detail']}" for f in exc) or "No exceptions.",
-        "facts": review_facts(a),
-        "decision": body.decision,
-        "reviewer": body.reviewer,
-        "resolved_on": now.isoformat(timespec="seconds"),
-        "reason": body.reason,
-        "evidence": body.evidence,
-        "conditions": body.conditions,
-        "source": "reviewer",
-        "agent_action": body.agent_action,
-    }
+    case = build_case(a, decision=body.decision, reviewer=body.reviewer, reason=body.reason,
+                      resolved_on=now.isoformat(timespec="seconds"), evidence=body.evidence,
+                      conditions=body.conditions, agent_action=body.agent_action)
     try:
         result = await state["memory"].retain_case(case)
     except Exception as e:
@@ -304,6 +258,18 @@ async def memory_ask(body: AskRequest):
         return await state["memory"].reflect(body.question, tags=tags)
     except Exception as e:
         raise HTTPException(502, f"Hindsight reflect failed: {e}") from e
+
+
+@app.get("/api/replay")
+async def replay_state():
+    return state["replay"].snapshot()
+
+
+@app.post("/api/replay/start")
+async def replay_start():
+    require_config()
+    started = state["replay"].start()
+    return {"started": started, **state["replay"].snapshot()}
 
 
 @app.get("/api/vendors")

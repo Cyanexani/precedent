@@ -100,10 +100,10 @@ function Playbook() {
 
   return (
     <Card title="Playbook written by Hindsight" subtitle="Hindsight mental models. They rewrite themselves after new resolutions are consolidated."
-      right={<button className="btn btn-ghost btn-sm" disabled={busy} onClick={refresh}>{busy ? "Refreshing…" : "Refresh now"}</button>}
+      right={<button className="btn btn-ghost btn-sm" disabled={busy} onClick={refresh}>{busy ? "Refreshing" : "Refresh now"}</button>}
       className="memory-card">
       <ErrorBox error={error} onRetry={load} />
-      {!models && !error && <Spinner label="Loading mental models…" />}
+      {!models && !error && <Spinner label="Loading mental models" />}
       {models?.map((m) => (
         <div key={m.id} className="mm">
           <button className="mm-head" onClick={() => setOpen(open === m.id ? null : m.id)}>
@@ -173,7 +173,7 @@ function TeachMemory({ vendors, reviewer, onSaved }) {
                 : "e.g. Invoices above Rs 5 lakh go into the weekly CFO batch."} />
         </label>
         {error && <p className="error-text">{error}</p>}
-        <button className="btn btn-memory" disabled={saving || !valid}>{saving ? "Saving to Hindsight…" : "Save to memory"}</button>
+        <button className="btn btn-memory" disabled={saving || !valid}>{saving ? "Saving to Hindsight" : "Save to memory"}</button>
         {saved && <p className="small memory-kicker">Saved as {saved.note_id} in {(saved.elapsed_ms / 1000).toFixed(1)} s.</p>}
       </form>
     </Card>
@@ -184,7 +184,7 @@ function Ledger({ rows, onForget, loading, error, onRetry }) {
   return (
     <Card title="What the agent remembers" subtitle="Every document in the Hindsight bank. Forgetting one deletes it and every fact extracted from it.">
       <ErrorBox error={error} onRetry={onRetry} />
-      {loading && <Spinner label="Reading the bank…" />}
+      {loading && <Spinner label="Reading the bank" />}
       {rows && rows.length === 0 && <p className="muted">The bank is empty. Resolve an invoice or load team history.</p>}
       {rows && rows.length > 0 && (
         <div className="table-wrap">

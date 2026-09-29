@@ -138,7 +138,7 @@ export default function ResolvePanel({ invoiceId, checks, onResolved, existing, 
         )}
         {error && <p className="error-text">{error}</p>}
         <button className="btn btn-primary" disabled={saving || !reasonOk || !reviewerOk}>
-          {saving ? "Saving to Hindsight…" : "Resolve and save to memory"}
+          {saving ? "Saving to Hindsight" : "Resolve and save"}
         </button>
       </form>
     </Card>

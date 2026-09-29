@@ -86,7 +86,7 @@ export default function MemoryPanel({ memory, vendorId, vendorName, loading }) {
 
   let body;
   if (loading) {
-    body = <p className="muted">Searching Hindsight for similar resolved cases…</p>;
+    body = <p className="muted">Searching Hindsight for similar resolved cases</p>;
   } else if (!memory) {
     body = <p className="muted">Run an analysis to search the team's memory for similar cases.</p>;
   } else if (!memory.enabled) {
@@ -157,7 +157,7 @@ export default function MemoryPanel({ memory, vendorId, vendorName, loading }) {
       </button>
       <form className="ask" onSubmit={ask}>
         <input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Ask the team memory, e.g. what do we know about this vendor?" maxLength={500} />
-        <button className="btn btn-memory btn-sm" disabled={asking || question.trim().length < 5}>{asking ? "Thinking…" : "Ask"}</button>
+        <button className="btn btn-memory btn-sm" disabled={asking || question.trim().length < 5}>{asking ? "Asking" : "Ask"}</button>
       </form>
       {askError && <p className="error-text small">{askError}</p>}
       {answer && <div className="reflect-answer"><p className="eyebrow">Hindsight reflect</p><p>{answer.answer}</p></div>}

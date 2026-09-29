@@ -9,7 +9,7 @@ export default function InvoiceQueue({ invoices, selectedId, onSelect, resolutio
         <span className="muted small">{invoices.length} pending</span>
       </div>
       <button className="btn btn-ghost btn-sm triage-btn" disabled={triaging} onClick={onTriage}>
-        {triaging ? "Checking memory…" : "Check queue against memory"}
+        {triaging ? "Checking memory" : "Check against memory"}
       </button>
       <ul>
         {invoices.map((inv) => {

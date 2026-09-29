@@ -31,6 +31,12 @@ Every AP team has knowledge that lives in one senior reviewer's head: "Shree Gan
 * "Brief me on this vendor" and free-form questions through Hindsight reflect.
 * The exact query and tag filters sent to Hindsight, plus everything that was filtered out and why.
 
+**Quarter replay: a measured learning curve**
+* 14 exceptions from July to September arrive in order. Before each recorded decision is revealed, the agent predicts it twice, once with what Hindsight has learned so far and once with no memory. The recorded decision is then retained in a dedicated replay bank (`<bank>-replay`), which starts empty.
+* Predictions are live model calls and recall is live Hindsight. The recorded decisions come from the dataset. The latest run is saved to `backend/data/runtime/replay_latest.json` and shown until the next run.
+* The page shows cumulative agreement with the reviewer for both arms, first half against second half, how many decisions memory fixed or broke, and every prediction with the cases Hindsight recalled.
+* Result of the run on 29 Sep 2026 with `openai/gpt-oss-120b`: 71% agreement with memory against 57% without over the quarter. In the first half both arms scored 57%. In the second half memory scored 86% against 57%. Memory turned 2 misses into matches and turned no match into a miss. Runs vary, because the model is not fully deterministic.
+
 **Memory and learning page**
 * Live counters: analyses, how often memory found a precedent, precedents ruled out, and how often the reviewer agreed with the agent with memory on versus off. Only real events from the session are counted.
 * A timeline of memories used per analysis.
@@ -136,6 +142,7 @@ Single process: run `npm run build` in `frontend`, then start only the backend. 
 7. Open `KST/26-27/0402` (price 4.2% over PO) and compare. Without memory the agent holds it. With memory it recalls the vendor's email about the index-linked rise and the earlier escalation-clause case, and asks for the index sheet instead.
 8. Switch "Reviewing as" to Arjun Menon and analyse `PIS/26-27/0409` (wrong GST head). His preference to reject rather than conditionally approve shows up in the checklist.
 9. Open **Memory and learning** to show the counters, the Playbook Hindsight wrote, the ledger, and "Teach the memory".
+10. Open **Quarter replay** to show the learning curve. "Run the replay again" takes about a minute and a half.
 
 The same loop runs headless against the live services:
 
@@ -201,6 +208,8 @@ The memory loop against the real services is exercised by `scripts/demo_memory_l
 | POST | `/api/triage` | Recall-only check of the whole queue |
 | GET | `/api/metrics` | Session counters and agreement rates |
 | GET | `/api/vendors` | Vendor list for forms |
+| GET | `/api/replay` | Latest quarter replay with summary |
+| POST | `/api/replay/start` | Start a new replay in the background |
 
 ## Limits
 

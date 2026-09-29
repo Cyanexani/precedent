@@ -855,5 +855,218 @@
       }
     ],
     "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/1001",
+    "vendor_id": "V001",
+    "po_date": "2026-06-20",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1900,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": [
+      {
+        "date": "2026-06-26",
+        "by": "Rohan Kulkarni, Procurement",
+        "change": "BOX-5PLY quantity revised from 1,200 to 1,900 pcs",
+        "reason": "Bulk order for the season"
+      }
+    ]
+  },
+  {
+    "id": "NF/PO/26-27/1008",
+    "vendor_id": "V002",
+    "po_date": "2026-06-25",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 520,
+        "unit_price": 238.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/1015",
+    "vendor_id": "V003",
+    "po_date": "2026-07-08",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 20,
+        "unit_price": 540.0,
+        "gst_rate": 18
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 1,
+        "unit_price": 4850.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/1022",
+    "vendor_id": "V001",
+    "po_date": "2026-07-22",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 2100,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": [
+      {
+        "date": "2026-07-29",
+        "by": "Rohan Kulkarni, Procurement",
+        "change": "BOX-5PLY quantity revised from 1,250 to 2,100 pcs",
+        "reason": "Bulk order for the season"
+      }
+    ]
+  },
+  {
+    "id": "NF/PO/26-27/1029",
+    "vendor_id": "V006",
+    "po_date": "2026-07-28",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 420,
+        "unit_price": 1250.0,
+        "gst_rate": 5
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/1036",
+    "vendor_id": "V002",
+    "po_date": "2026-08-03",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 560,
+        "unit_price": 238.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/1043",
+    "vendor_id": "V009",
+    "po_date": "2026-08-20",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 3,
+        "unit_price": 14500.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/1050",
+    "vendor_id": "V001",
+    "po_date": "2026-08-26",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1200,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/1057",
+    "vendor_id": "V008",
+    "po_date": "2026-08-30",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/1064",
+    "vendor_id": "V002",
+    "po_date": "2026-09-03",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 540,
+        "unit_price": 238.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
   }
 ]

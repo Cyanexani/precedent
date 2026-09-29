@@ -414,5 +414,117 @@
         "qty_received": 10
       }
     ]
+  },
+  {
+    "id": "NF/GRN/26-27/0770",
+    "po_id": "NF/PO/26-27/1001",
+    "grn_date": "2026-07-02",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "qty_received": 1900
+      }
+    ]
+  },
+  {
+    "id": "NF/GRN/26-27/0775",
+    "po_id": "NF/PO/26-27/1008",
+    "grn_date": "2026-07-07",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "qty_received": 520
+      }
+    ]
+  },
+  {
+    "id": "NF/GRN/26-27/0780",
+    "po_id": "NF/PO/26-27/1015",
+    "grn_date": "2026-07-20",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "qty_received": 20
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "qty_received": 1
+      }
+    ]
+  },
+  {
+    "id": "NF/GRN/26-27/0785",
+    "po_id": "NF/PO/26-27/1022",
+    "grn_date": "2026-08-03",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "qty_received": 2100
+      }
+    ]
+  },
+  {
+    "id": "NF/GRN/26-27/0790",
+    "po_id": "NF/PO/26-27/1029",
+    "grn_date": "2026-08-09",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "qty_received": 420
+      }
+    ]
+  },
+  {
+    "id": "NF/GRN/26-27/0795",
+    "po_id": "NF/PO/26-27/1036",
+    "grn_date": "2026-08-17",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "qty_received": 560
+      }
+    ]
+  },
+  {
+    "id": "NF/GRN/26-27/0800",
+    "po_id": "NF/PO/26-27/1043",
+    "grn_date": "2026-08-31",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "qty_received": 3
+      }
+    ]
+  },
+  {
+    "id": "NF/GRN/26-27/0805",
+    "po_id": "NF/PO/26-27/1050",
+    "grn_date": "2026-09-07",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "qty_received": 1200
+      }
+    ]
+  },
+  {
+    "id": "NF/GRN/26-27/0810",
+    "po_id": "NF/PO/26-27/1064",
+    "grn_date": "2026-09-16",
+    "received_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "qty_received": 540
+      }
+    ]
   }
 ]
