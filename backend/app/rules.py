@@ -18,6 +18,12 @@ SEVERITY_ORDER = {"info": 0, "low": 1, "medium": 2, "high": 3}
 GSTIN_RE = re.compile(r"^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$")
 RESUBMIT_SUFFIX_RE = re.compile(r"[/\-_ ]?(R\d+|REV\d*|COPY|DUP|DUPLICATE)$")
 TERMS_DAYS = {"IMMEDIATE": 0, "NET15": 15, "NET30": 30, "NET45": 45, "NET60": 60}
+RED_FLAG_PATTERNS = [
+    (re.compile(r"\b(already|previously|pre)[ -]?approved\b|\bapproved by\b", re.I), "claims the invoice is already approved"),
+    (re.compile(r"\bno need to (verify|check|match)\b|\bskip (the )?(verification|approval|check)", re.I), "asks the reviewer to skip a control"),
+    (re.compile(r"\b(release|make) (the )?payment (today|immediately|urgently)\b|\burgent(ly)? pay", re.I), "pressures for immediate payment"),
+    (re.compile(r"\b(new|updated|changed) bank\b", re.I), "asks to pay a different bank account"),
+]
 
 
 @dataclass
@@ -288,6 +294,17 @@ def payment_schedule(inv: dict, vendor: dict, rules: dict) -> tuple[list[Finding
                  "pay_by": pay_by.isoformat(), "days": days}
 
 
+def check_invoice_text(inv: dict) -> list[Finding]:
+    """Vendor-supplied text is data, never instructions. Flag text that tries to steer the review."""
+    text = " ".join(filter(None, [inv.get("notes")]))
+    hits = [label for rx, label in RED_FLAG_PATTERNS if rx.search(text)]
+    if not hits:
+        return []
+    return [Finding("INVOICE_TEXT_RED_FLAG", "medium", "Invoice text tries to steer the review",
+                    f"The vendor's note {', '.join(hits)}: \"{text}\". It was treated as vendor data, not as an instruction, "
+                    "and approvals are only accepted from the approval workflow.", {"signals": hits, "text": text})]
+
+
 def approval_requirement(inv: dict, findings: list[Finding], rules: dict) -> dict:
     tiers = rules["tiers"]
     base = next(t for t in tiers if t["max_amount"] is None or inv["total"] <= t["max_amount"])
@@ -332,6 +349,7 @@ def run_checks(store: DataStore, invoice_id: str) -> dict:
     findings += check_vendor(inv, vendor, rules)
     pay_findings, payment = payment_schedule(inv, vendor, rules)
     findings += pay_findings
+    findings += check_invoice_text(inv)
 
     approval = approval_requirement(inv, findings, rules)
     if approval["base_role"] == "CFO":

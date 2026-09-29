@@ -836,5 +836,24 @@
       }
     ],
     "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0994",
+    "vendor_id": "V004",
+    "po_date": "2026-09-15",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 38,
+        "unit_price": 1150.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
   }
 ]

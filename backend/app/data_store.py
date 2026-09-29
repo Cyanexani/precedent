@@ -26,6 +26,7 @@ class DataStore:
         self.payment_terms: dict[str, dict] = {t["code"]: t for t in load("payment_terms.json")}
         self.approval_rules: dict = load("approval_rules.json")
         self.historical_cases: list[dict] = load("historical_cases.json")
+        self.team_notes: list[dict] = load("team_notes.json")
 
     def get_vendor(self, vendor_id: str) -> dict | None:
         return self.vendors.get(vendor_id)

@@ -5,6 +5,9 @@ import { Findings, InvoiceHeader, POComparison, VendorAndApproval } from "./comp
 import MemoryPanel from "./components/MemoryPanel.jsx";
 import AgentPanel, { CompareView } from "./components/AgentPanel.jsx";
 import ResolvePanel from "./components/ResolvePanel.jsx";
+import MemoryView from "./components/MemoryView.jsx";
+
+const REVIEWERS = ["Priya Nair", "Arjun Menon"];
 import { ErrorBox, Spinner } from "./components/ui.jsx";
 
 function SetupScreen({ config }) {
@@ -37,6 +40,41 @@ export default function App() {
   const [stats, setStats] = useState(null);
   const [memBusy, setMemBusy] = useState(null);
   const [memMsg, setMemMsg] = useState(null);
+  const [view, setView] = useState("desk");
+  const [reviewer, setReviewer] = useState(() => {
+    try { return localStorage.getItem("precedent.reviewer") || REVIEWERS[0]; } catch { return REVIEWERS[0]; }
+  });
+  const [vendors, setVendors] = useState([]);
+  const [triage, setTriage] = useState(null);
+  const [triaging, setTriaging] = useState(false);
+  const [ledgerIds, setLedgerIds] = useState(new Set());
+  const [memoryVersion, setMemoryVersion] = useState(0);
+
+  useEffect(() => {
+    try { localStorage.setItem("precedent.reviewer", reviewer); } catch {}
+  }, [reviewer]);
+
+  const refreshLedger = useCallback(() => {
+    api.ledger().then((rows) => setLedgerIds(new Set(rows.map((r) => r.id)))).catch(() => {});
+  }, []);
+
+  async function runTriage() {
+    setTriaging(true);
+    try {
+      setTriage(await api.triage());
+    } catch (e) {
+      setMemMsg(e.message);
+    } finally {
+      setTriaging(false);
+    }
+  }
+
+  function memoryChanged() {
+    refreshStats();
+    refreshLedger();
+    setTriage(null);
+    setMemoryVersion((v) => v + 1);
+  }
 
   const refreshStats = useCallback(() => {
     api.memoryStats().then(setStats).catch(() => setStats(null));
@@ -52,10 +90,12 @@ export default function App() {
       setInvoices(list);
       setSelectedId((cur) => cur || list[0]?.id);
       refreshStats();
+      refreshLedger();
+      api.vendors().then(setVendors).catch(() => {});
     } catch (e) {
       setBootError(e.message);
     }
-  }, [refreshStats]);
+  }, [refreshStats, refreshLedger]);
 
   useEffect(() => { boot(); }, [boot]);
 
@@ -75,11 +115,11 @@ export default function App() {
     setCompare(null);
     try {
       if (mode === "compare") {
-        const data = await api.compare(selectedId);
+        const data = await api.compare(selectedId, reviewer);
         setCompare(data);
         setResult(data.with_memory);
       } else {
-        setResult(await api.analyze(selectedId, mode === "memory"));
+        setResult(await api.analyze(selectedId, mode === "memory", reviewer));
       }
     } catch (e) {
       setRunError(e.message);
@@ -90,7 +130,7 @@ export default function App() {
 
   function onResolved(id, res) {
     setResolutions((r) => ({ ...r, [id]: res }));
-    refreshStats();
+    memoryChanged();
   }
 
   async function memoryAction(kind) {
@@ -100,7 +140,7 @@ export default function App() {
     try {
       if (kind === "seed") {
         const r = await api.seedHistory();
-        setMemMsg(`Loaded ${r.retained.length} past team cases into Hindsight in ${(r.elapsed_ms / 1000).toFixed(1)} s.`);
+        setMemMsg(`Loaded ${r.retained.length} past cases and team notes into Hindsight in ${(r.elapsed_ms / 1000).toFixed(1)} s.`);
       } else {
         await api.resetMemory();
         setResolutions({});
@@ -109,7 +149,7 @@ export default function App() {
         setCompare(null);
         setMemMsg("Memory bank cleared.");
       }
-      refreshStats();
+      memoryChanged();
     } catch (e) {
       setMemMsg(e.message);
     } finally {
@@ -133,7 +173,17 @@ export default function App() {
             <span className="muted small">AP exception desk for {config.company.name}</span>
           </div>
         </div>
+        <nav className="tabs">
+          <button className={`tab ${view === "desk" ? "active" : ""}`} onClick={() => setView("desk")}>Exception desk</button>
+          <button className={`tab ${view === "memory" ? "active" : ""}`} onClick={() => setView("memory")}>Memory and learning</button>
+        </nav>
         <div className="topbar-right">
+          <label className="reviewer-pick">
+            <span className="muted small">Reviewing as</span>
+            <select value={reviewer} onChange={(e) => setReviewer(e.target.value)}>
+              {REVIEWERS.map((r) => <option key={r} value={r}>{r}</option>)}
+            </select>
+          </label>
           <span className="bank-pill" title={config.hindsight_base_url}>
             <span className="dot" /> Hindsight bank <span className="mono">{config.bank_id}</span>
             {stats && <span className="muted"> {stats.memory_units} memory units</span>}
@@ -148,8 +198,14 @@ export default function App() {
       </header>
       {memMsg && <div className="toast" onClick={() => setMemMsg(null)}>{memMsg}</div>}
 
+      {view === "memory" ? (
+        <div className="layout-single">
+          <MemoryView key={memoryVersion} reviewer={reviewer} vendors={vendors} onMemoryChanged={memoryChanged} />
+        </div>
+      ) : (
       <div className="layout">
-        <InvoiceQueue invoices={invoices} selectedId={selectedId} onSelect={setSelectedId} resolutions={resolutions} />
+        <InvoiceQueue invoices={invoices} selectedId={selectedId} onSelect={setSelectedId} resolutions={resolutions}
+          triage={triage} onTriage={runTriage} triaging={triaging} ledgerIds={ledgerIds} />
         <main className="main">
           <ErrorBox error={checksError} onRetry={() => setSelectedId((id) => id)} />
           {!checks && !checksError && <Spinner label="Running rule checks…" />}
@@ -177,15 +233,17 @@ export default function App() {
                   <VendorAndApproval checks={checks} />
                 </div>
                 <div className="col">
-                  <MemoryPanel memory={result?.memory} vendorId={checks.vendor.id} loading={running && running !== "plain"} />
+                  <MemoryPanel memory={result?.memory} vendorId={checks.vendor.id} vendorName={checks.vendor.name} loading={running && running !== "plain"} />
                   <AgentPanel result={result} />
-                  <ResolvePanel invoiceId={selectedId} checks={checks} onResolved={onResolved} existing={existing} />
+                  <ResolvePanel invoiceId={selectedId} checks={checks} onResolved={onResolved} existing={existing}
+                    reviewerName={reviewer} lastResult={result} />
                 </div>
               </div>
             </>
           )}
         </main>
       </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,47 @@
+[
+  {
+    "note_id": "NOTE-KST-JPC-2026-09",
+    "kind": "vendor_note",
+    "vendor_id": "V002",
+    "reviewer": null,
+    "author": "Anil Deshmukh",
+    "created_on": "2026-09-03",
+    "text": "Hitesh Patel of Krishna Steel Traders emailed procurement on 3 Sep 2026: SS304 sheet prices rise by about 4% from September because the JPC stainless index went up. Under clause 7.2 of rate contract RC-KST-2026 they will bill the escalated rate and attach the JPC index sheet to each invoice. Procurement accepted escalation up to 5% for September and October."
+  },
+  {
+    "note_id": "NOTE-PREF-PRIYA",
+    "kind": "reviewer_preference",
+    "vendor_id": null,
+    "reviewer": "Priya Nair",
+    "author": "Priya Nair",
+    "created_on": "2026-07-01",
+    "text": "Priya Nair wants the goods receipt number quoted in every approval note, and never approves a freight or logistics invoice without the signed trip sheet or delivery challan."
+  },
+  {
+    "note_id": "NOTE-PREF-ARJUN",
+    "kind": "reviewer_preference",
+    "vendor_id": null,
+    "reviewer": "Arjun Menon",
+    "author": "Arjun Menon",
+    "created_on": "2026-07-01",
+    "text": "Arjun Menon prefers to reject and ask for a corrected invoice rather than approve with conditions whenever GST is charged under the wrong head or rate."
+  },
+  {
+    "note_id": "NOTE-POLICY-BANK",
+    "kind": "policy",
+    "vendor_id": null,
+    "reviewer": null,
+    "author": "Rajesh Iyer, CFO",
+    "created_on": "2026-08-12",
+    "text": "Policy after the August payment diversion attempt: bank detail changes are accepted only through the signed vendor master update form, never from an invoice or an email. Always call back on the phone number already on the vendor master."
+  },
+  {
+    "note_id": "NOTE-POLICY-MSME",
+    "kind": "policy",
+    "vendor_id": null,
+    "reviewer": null,
+    "author": "Rajesh Iyer, CFO",
+    "created_on": "2026-04-01",
+    "text": "Policy: MSME registered vendors are paid within 45 days of acceptance whatever terms are printed on the invoice, because late MSME payments are disallowed as a tax deduction under section 43B(h)."
+  }
+]

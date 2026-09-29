@@ -22,6 +22,7 @@ function CaseCard({ c }) {
       <p className="case-line small">
         Decision <Chip tone={c.decision === "reject" ? "bad" : c.decision === "hold" ? "warn" : "ok"}>{ACTION_LABEL[c.decision] || c.decision}</Chip>{" "}
         by {c.reviewer} on {day(c.resolved_on)}
+        {c.age_days != null && <span className={`age ${c.age_days > 180 ? "age-old" : ""}`}>{c.age_days === 0 ? "today" : `${c.age_days} days ago`}{c.age_days > 180 ? ", may be stale" : ""}</span>}
       </p>
       <ul className="facts">
         {c.facts.slice(0, 4).map((f, i) => <li key={i}>{f}</li>)}
@@ -31,12 +32,43 @@ function CaseCard({ c }) {
   );
 }
 
-export default function MemoryPanel({ memory, vendorId, loading }) {
+function NoteList({ title, notes }) {
+  if (!notes?.length) return null;
+  return (
+    <>
+      <p className="eyebrow mt">{title}</p>
+      {notes.map((n) => (
+        <div key={n.note_id} className="case-card note-card">
+          <div className="case-top">
+            <span className="mono case-id">{n.note_id}</span>
+            <Chip tone="info">{n.label}</Chip>
+          </div>
+          <ul className="facts">{n.facts.slice(0, 3).map((f, i) => <li key={i}>{f}</li>)}</ul>
+          <p className="muted tiny">Recorded by {n.author}{n.created_on ? ` on ${day(n.created_on)}` : ""}.</p>
+        </div>
+      ))}
+    </>
+  );
+}
+
+export default function MemoryPanel({ memory, vendorId, vendorName, loading }) {
   const [showRaw, setShowRaw] = useState(false);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState(null);
   const [asking, setAsking] = useState(false);
   const [askError, setAskError] = useState(null);
+
+  async function brief() {
+    setAsking(true);
+    setAskError(null);
+    try {
+      setAnswer(await api.ask(`Brief me on ${vendorName}: past exceptions, how they were resolved, and what to check before paying them.`, vendorId));
+    } catch (err) {
+      setAskError(err.message);
+    } finally {
+      setAsking(false);
+    }
+  }
 
   async function ask(e) {
     e.preventDefault();
@@ -70,7 +102,13 @@ export default function MemoryPanel({ memory, vendorId, loading }) {
             resolved case for this vendor or these exception types. The agent was told there is no precedent.
           </p>
         )}
+        {memory.strength && memory.precedents.length > 0 && (
+          <p className={`strength strength-${memory.strength.level}`}>Precedent strength: {memory.strength.label}</p>
+        )}
         {memory.precedents.map((c) => <CaseCard key={c.case_id} c={c} />)}
+        <NoteList title="Vendor communications" notes={memory.vendor_notes} />
+        <NoteList title={`Preferences of ${memory.reviewer || "the reviewer"}`} notes={memory.reviewer_preferences} />
+        <NoteList title="Team policies" notes={memory.policies} />
         {memory.vendor_context.length > 0 && (
           <>
             <p className="eyebrow mt">Same vendor, other exceptions</p>
@@ -114,6 +152,9 @@ export default function MemoryPanel({ memory, vendorId, loading }) {
         {badge && <Chip tone={memory.status === "none" ? "neutral" : "memory"}>{badge}</Chip>}
       </header>
       {body}
+      <button type="button" className="btn btn-ghost btn-sm mt" disabled={asking} onClick={brief}>
+        Brief me on {vendorName || "this vendor"}
+      </button>
       <form className="ask" onSubmit={ask}>
         <input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Ask the team memory, e.g. what do we know about this vendor?" maxLength={500} />
         <button className="btn btn-memory btn-sm" disabled={asking || question.trim().length < 5}>{asking ? "Thinking…" : "Ask"}</button>

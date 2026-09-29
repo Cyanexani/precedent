@@ -86,12 +86,58 @@ def case_metadata(case: dict) -> dict[str, str]:
         "resolved_on": case["resolved_on"],
         "total": f"{case['total']:.2f}",
         "source": case.get("source", "reviewer"),
+        "agent_action": case.get("agent_action") or "",
     }
 
 
 def case_tags(case: dict) -> list[str]:
     return [vendor_tag(case["vendor_id"]), *(exc_tag(c) for c in case["exception_codes"]),
             f"decision:{case['decision']}", f"reviewer:{case['reviewer'].lower().replace(' ', '-')}"]
+
+
+def reviewer_slug(name: str) -> str:
+    return name.strip().lower().replace(" ", "-")
+
+
+NOTE_KINDS = {
+    "vendor_note": "Vendor communication",
+    "reviewer_preference": "Reviewer preference",
+    "policy": "Team policy",
+}
+
+
+def note_content(note: dict) -> str:
+    label = NOTE_KINDS[note["kind"]]
+    who = f" about vendor {note['vendor_name']} (vendor id {note['vendor_id']})" if note.get("vendor_id") else ""
+    rev = f" for reviewer {note['reviewer']}" if note.get("reviewer") else ""
+    return f"{label}{who}{rev}, recorded by {note['author']} on {note['created_on']}.\n{note['text']}"
+
+
+def note_metadata(note: dict) -> dict[str, str]:
+    return {"note_id": note["note_id"], "kind": note["kind"], "vendor_id": note.get("vendor_id") or "",
+            "vendor_name": note.get("vendor_name") or "", "reviewer": note.get("reviewer") or "",
+            "author": note["author"], "created_on": note["created_on"]}
+
+
+def note_tags(note: dict) -> list[str]:
+    tags = [f"kind:{note['kind']}"]
+    if note.get("vendor_id"):
+        tags.append(vendor_tag(note["vendor_id"]))
+    if note.get("reviewer"):
+        tags.append(f"reviewer:{reviewer_slug(note['reviewer'])}")
+    return tags
+
+
+# Hindsight mental models: summaries the bank keeps rewriting as resolutions accumulate.
+MENTAL_MODELS = [
+    {"id": "ap-playbook", "name": "AP Exception Playbook",
+     "source_query": "What exception types recur in our accounts payable work, how did reviewers resolve each one, what evidence "
+                     "made an exception acceptable or unacceptable, and what standing instructions apply? Organise by exception type "
+                     "and cite case ids."},
+    {"id": "vendor-watchlist", "name": "Vendor Watchlist",
+     "source_query": "Which vendors have a history of exceptions, fraud attempts, tax errors, duplicates or price escalations, and "
+                     "what should a reviewer check before paying each of them? One short entry per vendor."},
+]
 
 
 def _ts(date_str: str) -> datetime:
@@ -125,8 +171,22 @@ class MemoryService:
                 reflect_mission=REFLECT_MISSION,
                 enable_observations=True,
             )
+            await self._ensure_mental_models()
             self._bank_ready = True
             log.info("[hindsight] bank ready: %s", self.bank_id)
+
+    async def _ensure_mental_models(self) -> None:
+        try:
+            existing = await self.client.alist_mental_models(bank_id=self.bank_id, detail="metadata")
+            have = {m.id for m in existing.items or []}
+            for mm in MENTAL_MODELS:
+                if mm["id"] not in have:
+                    await self.client.acreate_mental_model(bank_id=self.bank_id, id=mm["id"], name=mm["name"],
+                                                           source_query=mm["source_query"], max_tokens=1500,
+                                                           trigger={"refresh_after_consolidation": True})
+                    log.info("[hindsight] mental model created: %s", mm["id"])
+        except Exception as e:  # the playbook is a bonus; recall and retain must keep working without it
+            log.warning("[hindsight] mental model setup failed: %s", e)
 
     # ------------------------------------------------------------------ retain
 
@@ -149,7 +209,19 @@ class MemoryService:
                 "tags": case_tags(case), "content": content, "elapsed_ms": ms,
                 "success": bool(getattr(resp, "success", True))}
 
-    async def retain_cases(self, cases: list[dict]) -> dict:
+    async def retain_note(self, note: dict) -> dict:
+        await self.ensure_bank()
+        t0 = time.perf_counter()
+        content = note_content(note)
+        await self.client.aretain(bank_id=self.bank_id, content=content,
+                                  context=f"{NOTE_KINDS[note['kind']]} for an accounts payable team",
+                                  timestamp=_ts(note["created_on"]), document_id=note["note_id"],
+                                  metadata=note_metadata(note), tags=note_tags(note))
+        ms = int((time.perf_counter() - t0) * 1000)
+        log.info("[hindsight] retain note %s tags=%s in %dms", note["note_id"], note_tags(note), ms)
+        return {"note_id": note["note_id"], "tags": note_tags(note), "content": content, "elapsed_ms": ms}
+
+    async def retain_cases(self, cases: list[dict], notes: list[dict] | None = None) -> dict:
         await self.ensure_bank()
         t0 = time.perf_counter()
         items = [{
@@ -160,10 +232,19 @@ class MemoryService:
             "metadata": case_metadata(c),
             "tags": case_tags(c),
         } for c in cases]
+        items += [{
+            "content": note_content(n),
+            "context": f"{NOTE_KINDS[n['kind']]} for an accounts payable team",
+            "timestamp": _ts(n["created_on"]),
+            "document_id": n["note_id"],
+            "metadata": note_metadata(n),
+            "tags": note_tags(n),
+        } for n in notes or []]
         await self.client.aretain_batch(bank_id=self.bank_id, items=items)
         ms = int((time.perf_counter() - t0) * 1000)
-        log.info("[hindsight] retain_batch %d cases in %dms", len(cases), ms)
-        return {"retained": [c["case_id"] for c in cases], "elapsed_ms": ms, "bank_id": self.bank_id}
+        log.info("[hindsight] retain_batch %d cases, %d notes in %dms", len(cases), len(notes or []), ms)
+        return {"retained": [c["case_id"] for c in cases] + [n["note_id"] for n in notes or []],
+                "elapsed_ms": ms, "bank_id": self.bank_id}
 
     # ------------------------------------------------------------------ recall
 
@@ -181,8 +262,9 @@ class MemoryService:
                                          tags_match="any_strict", budget="mid", max_tokens=4096)
         return list(resp.results or [])
 
-    async def recall_precedents(self, analysis: dict, extra_query: str | None = None) -> dict:
-        """Two tag-scoped recall passes, then deterministic gating into precedent cases."""
+    async def recall_precedents(self, analysis: dict, extra_query: str | None = None,
+                                reviewer: str | None = None, lite: bool = False) -> dict:
+        """Tag-scoped recall passes, then deterministic gating into precedents, notes and preferences."""
         await self.ensure_bank()
         inv, vendor = analysis["invoice"], analysis["vendor"]
         codes = analysis["exception_codes"]
@@ -190,6 +272,10 @@ class MemoryService:
         passes = [("vendor", [vendor_tag(vendor["id"])])]
         if codes:
             passes.append(("exception", [exc_tag(c) for c in codes]))
+        if not lite:
+            passes.append(("policy", ["kind:policy"]))
+            if reviewer:
+                passes.append(("reviewer", [f"reviewer:{reviewer_slug(reviewer)}"]))
 
         t0 = time.perf_counter()
         results = await asyncio.gather(*(self._recall(query, tags) for _, tags in passes), return_exceptions=True)
@@ -206,6 +292,7 @@ class MemoryService:
 
         cases: dict[str, dict] = {}
         patterns: dict[str, dict] = {}
+        notes: dict[str, dict] = {}
         seen_facts: set[str] = set()
         for pass_name, r in raw:
             if r.id in seen_facts:
@@ -215,6 +302,19 @@ class MemoryService:
                 patterns[r.id] = {"id": r.id, "text": r.text, "tags": r.tags or [], "pass": pass_name}
                 continue
             md = r.metadata or {}
+            if md.get("kind") in NOTE_KINDS:
+                kind = md["kind"]
+                relevant = (kind == "policy"
+                            or (kind == "vendor_note" and md.get("vendor_id") == vendor["id"])
+                            or (kind == "reviewer_preference" and bool(reviewer)
+                                and md.get("reviewer", "").lower() == (reviewer or "").lower()))
+                if relevant:
+                    n = notes.setdefault(md["note_id"], {"note_id": md["note_id"], "kind": kind, "label": NOTE_KINDS[kind],
+                                                        "author": md.get("author"), "created_on": md.get("created_on"),
+                                                        "reviewer": md.get("reviewer"), "facts": []})
+                    if len(n["facts"]) < 4:
+                        n["facts"].append(r.text)
+                continue
             case_id = md.get("case_id") or r.document_id
             if not case_id:
                 continue
@@ -261,16 +361,38 @@ class MemoryService:
 
         order = {"same_vendor_same_issue": 0, "same_issue_other_vendor": 1}
         precedents.sort(key=lambda p: (order[p["relation"]], p.get("resolved_on") or ""), reverse=False)
+        now = datetime.now(timezone.utc)
         for p in precedents + context_cases:
             p["relation_label"] = RELATION_LABELS[p["relation"]]
+            try:
+                p["age_days"] = max(0, (now - _ts(p["resolved_on"])).days) if p.get("resolved_on") else None
+            except Exception:
+                p["age_days"] = None
         n = len(precedents)
         status = "none" if n == 0 else ("single" if n == 1 else "multiple")
+        direct = [p for p in precedents if p["relation"] == "same_vendor_same_issue"]
+        decisions = {("approve" if (p.get("decision") or "").startswith("approve") else p.get("decision")) for p in direct}
+        if not direct:
+            strength = {"level": "none" if not precedents else "related",
+                        "label": "No direct precedent" if not precedents else "Related cases only, from other vendors"}
+        elif len(decisions) > 1:
+            strength = {"level": "conflicting", "label": f"Conflicting decisions across {len(direct)} cases"}
+        elif len(direct) >= 3:
+            strength = {"level": "established", "label": f"Established pattern, {len(direct)} consistent cases"}
+        else:
+            strength = {"level": "emerging", "label": f"Emerging pattern, {len(direct)} case" + ("s" if len(direct) > 1 else "")}
+        by_kind = lambda k: [x for x in notes.values() if x["kind"] == k]
         return {
             "enabled": True,
             "bank_id": self.bank_id,
             "status": status,
             "precedent_count": n,
             "precedents": precedents,
+            "strength": strength,
+            "vendor_notes": by_kind("vendor_note"),
+            "reviewer_preferences": by_kind("reviewer_preference"),
+            "policies": by_kind("policy")[:3],
+            "reviewer": reviewer,
             "vendor_context": context_cases,
             "patterns": list(patterns.values())[:5],
             "gated_out": gated_out,
@@ -294,6 +416,50 @@ class MemoryService:
         await self.ensure_bank()
         resp = await self.client.alist_memories(bank_id=self.bank_id, limit=1)
         return {"bank_id": self.bank_id, "memory_units": resp.total}
+
+    async def ledger(self) -> list[dict]:
+        """Everything the bank holds, one row per retained document (case or note)."""
+        await self.ensure_bank()
+        resp = await self.client.documents.list_documents(self.bank_id, limit=200)
+        rows = []
+        for d in resp.items or []:
+            tags = d.tags or []
+
+            def tag(prefix, tags=tags):
+                return [t.split(":", 1)[1] for t in tags if t.startswith(prefix)]
+
+            kind = (tag("kind:") or ["case"])[0]
+            rows.append({"id": d.id, "kind": kind, "kind_label": NOTE_KINDS.get(kind, "Resolved case"),
+                         "created_at": d.created_at, "updated_at": d.updated_at, "memory_units": d.memory_unit_count,
+                         "vendor_id": (tag("vendor:") or [None])[0], "decision": (tag("decision:") or [None])[0],
+                         "reviewer": (tag("reviewer:") or [None])[0], "exception_codes": tag("exc:"), "tags": tags})
+        rows.sort(key=lambda r: r["updated_at"] or "", reverse=True)
+        return rows
+
+    async def forget(self, document_id: str) -> dict:
+        await self.ensure_bank()
+        await self.client.documents.delete_document(self.bank_id, document_id)
+        log.info("[hindsight] forgot document %s", document_id)
+        return {"forgotten": document_id}
+
+    async def playbook(self) -> list[dict]:
+        await self.ensure_bank()
+        resp = await self.client.alist_mental_models(bank_id=self.bank_id, detail="content")
+        wanted = {m["id"] for m in MENTAL_MODELS}
+        return [{"id": m.id, "name": m.name, "content": m.content, "last_refreshed_at": m.last_refreshed_at,
+                 "is_stale": m.is_stale, "source_query": m.source_query}
+                for m in resp.items or [] if m.id in wanted]
+
+    async def refresh_playbook(self) -> dict:
+        await self.ensure_bank()
+        ops = []
+        for mm in MENTAL_MODELS:
+            try:
+                r = await self.client.arefresh_mental_model(self.bank_id, mm["id"])
+                ops.append({"id": mm["id"], "operation_id": getattr(r, "operation_id", None)})
+            except Exception as e:
+                ops.append({"id": mm["id"], "error": str(e)})
+        return {"refreshing": ops}
 
     async def reset(self) -> dict:
         try:

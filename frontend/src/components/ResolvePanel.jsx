@@ -19,7 +19,7 @@ const EVIDENCE_BY_CODE = {
   APPROVAL_CFO: ["CFO approval obtained"],
 };
 
-export default function ResolvePanel({ invoiceId, checks, onResolved, existing }) {
+export default function ResolvePanel({ invoiceId, checks, onResolved, existing, reviewerName, lastResult }) {
   const [decision, setDecision] = useState("approve");
   const [reviewer, setReviewer] = useState(() => {
     try { return localStorage.getItem("precedent.reviewer") || ""; } catch { return ""; }
@@ -31,6 +31,10 @@ export default function ResolvePanel({ invoiceId, checks, onResolved, existing }
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   const [done, setDone] = useState(existing || null);
+
+  useEffect(() => {
+    if (reviewerName) setReviewer(reviewerName);
+  }, [reviewerName]);
 
   useEffect(() => {
     setDone(existing || null);
@@ -57,6 +61,8 @@ export default function ResolvePanel({ invoiceId, checks, onResolved, existing }
         reason: reason.trim(),
         evidence: [...evidence, ...extraEvidence.split("\n")].filter((s) => s.trim()),
         conditions: conditions.split("\n").filter((s) => s.trim()),
+        agent_action: lastResult?.invoice_id === invoiceId ? lastResult.agent?.recommendation?.action : null,
+        agent_used_memory: lastResult?.invoice_id === invoiceId ? lastResult.use_memory : null,
       });
       setDone(res);
       onResolved(invoiceId, res);
@@ -84,6 +90,7 @@ export default function ResolvePanel({ invoiceId, checks, onResolved, existing }
           </details>
         )}
         <button className="btn btn-ghost btn-sm" onClick={() => setDone(null)}>Record a revised resolution</button>
+        <p className="muted tiny">A revision is saved under the same case id, so Hindsight replaces the old memory instead of keeping both.</p>
       </Card>
     );
   }
