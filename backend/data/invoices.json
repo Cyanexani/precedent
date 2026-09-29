@@ -1,0 +1,1569 @@
+[
+  {
+    "id": "H-001",
+    "invoice_no": "SGP/26-27/0101",
+    "vendor_id": "V001",
+    "invoice_date": "2026-04-09",
+    "received_date": "2026-04-11",
+    "po_id": "NF/PO/26-27/0707",
+    "grn_id": "NF/GRN/26-27/0605",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1200,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 42000.0
+      }
+    ],
+    "tax": {
+      "cgst": 3780.0,
+      "sgst": 3780.0,
+      "igst": 0.0
+    },
+    "subtotal": 42000.0,
+    "tax_total": 7560.0,
+    "total": 49560.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-05-09",
+    "bank_account_last4": "4417",
+    "status": "paid",
+    "paid_on": "2026-05-06",
+    "notes": null
+  },
+  {
+    "id": "H-002",
+    "invoice_no": "SGP/26-27/0162",
+    "vendor_id": "V001",
+    "invoice_date": "2026-05-11",
+    "received_date": "2026-05-13",
+    "po_id": "NF/PO/26-27/0714",
+    "grn_id": "NF/GRN/26-27/0610",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1300,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 45500.0
+      }
+    ],
+    "tax": {
+      "cgst": 4095.0,
+      "sgst": 4095.0,
+      "igst": 0.0
+    },
+    "subtotal": 45500.0,
+    "tax_total": 8190.0,
+    "total": 53690.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-06-10",
+    "bank_account_last4": "4417",
+    "status": "paid",
+    "paid_on": "2026-06-07",
+    "notes": null
+  },
+  {
+    "id": "H-003",
+    "invoice_no": "SGP/26-27/0223",
+    "vendor_id": "V001",
+    "invoice_date": "2026-06-10",
+    "received_date": "2026-06-12",
+    "po_id": "NF/PO/26-27/0721",
+    "grn_id": "NF/GRN/26-27/0615",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1250,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 43750.0
+      }
+    ],
+    "tax": {
+      "cgst": 3937.5,
+      "sgst": 3937.5,
+      "igst": 0.0
+    },
+    "subtotal": 43750.0,
+    "tax_total": 7875.0,
+    "total": 51625.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-07-10",
+    "bank_account_last4": "4417",
+    "status": "paid",
+    "paid_on": "2026-07-07",
+    "notes": null
+  },
+  {
+    "id": "H-004",
+    "invoice_no": "SGP/26-27/0284",
+    "vendor_id": "V001",
+    "invoice_date": "2026-07-09",
+    "received_date": "2026-07-11",
+    "po_id": "NF/PO/26-27/0728",
+    "grn_id": "NF/GRN/26-27/0620",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1400,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 49000.0
+      }
+    ],
+    "tax": {
+      "cgst": 4410.0,
+      "sgst": 4410.0,
+      "igst": 0.0
+    },
+    "subtotal": 49000.0,
+    "tax_total": 8820.0,
+    "total": 57820.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-08-08",
+    "bank_account_last4": "4417",
+    "status": "paid",
+    "paid_on": "2026-08-05",
+    "notes": null
+  },
+  {
+    "id": "H-005",
+    "invoice_no": "SGP/26-27/0345",
+    "vendor_id": "V001",
+    "invoice_date": "2026-08-07",
+    "received_date": "2026-08-09",
+    "po_id": "NF/PO/26-27/0735",
+    "grn_id": "NF/GRN/26-27/0625",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1150,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 40250.0
+      }
+    ],
+    "tax": {
+      "cgst": 3622.5,
+      "sgst": 3622.5,
+      "igst": 0.0
+    },
+    "subtotal": 40250.0,
+    "tax_total": 7245.0,
+    "total": 47495.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-06",
+    "bank_account_last4": "4417",
+    "status": "paid",
+    "paid_on": "2026-09-03",
+    "notes": null
+  },
+  {
+    "id": "H-006",
+    "invoice_no": "KST/26-27/0211",
+    "vendor_id": "V002",
+    "invoice_date": "2026-04-22",
+    "received_date": "2026-04-24",
+    "po_id": "NF/PO/26-27/0742",
+    "grn_id": "NF/GRN/26-27/0630",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 500,
+        "unit_price": 238.0,
+        "gst_rate": 18,
+        "amount": 119000.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 21420.0
+    },
+    "subtotal": 119000.0,
+    "tax_total": 21420.0,
+    "total": 140420.0,
+    "payment_terms": "NET45",
+    "due_date": "2026-06-06",
+    "bank_account_last4": "7702",
+    "status": "paid",
+    "paid_on": "2026-06-03",
+    "notes": null
+  },
+  {
+    "id": "H-007",
+    "invoice_no": "KST/26-27/0248",
+    "vendor_id": "V002",
+    "invoice_date": "2026-05-27",
+    "received_date": "2026-05-29",
+    "po_id": "NF/PO/26-27/0749",
+    "grn_id": "NF/GRN/26-27/0635",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 620,
+        "unit_price": 238.0,
+        "gst_rate": 18,
+        "amount": 147560.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 26560.8
+    },
+    "subtotal": 147560.0,
+    "tax_total": 26560.8,
+    "total": 174120.8,
+    "payment_terms": "NET45",
+    "due_date": "2026-07-11",
+    "bank_account_last4": "7702",
+    "status": "paid",
+    "paid_on": "2026-07-08",
+    "notes": null
+  },
+  {
+    "id": "H-008",
+    "invoice_no": "KST/26-27/0285",
+    "vendor_id": "V002",
+    "invoice_date": "2026-06-24",
+    "received_date": "2026-06-26",
+    "po_id": "NF/PO/26-27/0756",
+    "grn_id": "NF/GRN/26-27/0640",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 540,
+        "unit_price": 238.0,
+        "gst_rate": 18,
+        "amount": 128520.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 23133.6
+    },
+    "subtotal": 128520.0,
+    "tax_total": 23133.6,
+    "total": 151653.6,
+    "payment_terms": "NET45",
+    "due_date": "2026-08-08",
+    "bank_account_last4": "7702",
+    "status": "paid",
+    "paid_on": "2026-08-05",
+    "notes": null
+  },
+  {
+    "id": "H-009",
+    "invoice_no": "KST/26-27/0322",
+    "vendor_id": "V002",
+    "invoice_date": "2026-08-19",
+    "received_date": "2026-08-21",
+    "po_id": "NF/PO/26-27/0763",
+    "grn_id": "NF/GRN/26-27/0645",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 580,
+        "unit_price": 238.0,
+        "gst_rate": 18,
+        "amount": 138040.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 24847.2
+    },
+    "subtotal": 138040.0,
+    "tax_total": 24847.2,
+    "total": 162887.2,
+    "payment_terms": "NET45",
+    "due_date": "2026-10-03",
+    "bank_account_last4": "7702",
+    "status": "paid",
+    "paid_on": "2026-09-30",
+    "notes": null
+  },
+  {
+    "id": "H-010",
+    "invoice_no": "SBE/26-27/0120",
+    "vendor_id": "V003",
+    "invoice_date": "2026-04-15",
+    "received_date": "2026-04-17",
+    "po_id": "NF/PO/26-27/0770",
+    "grn_id": "NF/GRN/26-27/0650",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 20,
+        "unit_price": 540.0,
+        "gst_rate": 18,
+        "amount": 10800.0
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 1,
+        "unit_price": 4850.0,
+        "gst_rate": 18,
+        "amount": 4850.0
+      }
+    ],
+    "tax": {
+      "cgst": 1408.5,
+      "sgst": 1408.5,
+      "igst": 0.0
+    },
+    "subtotal": 15650.0,
+    "tax_total": 2817.0,
+    "total": 18467.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-05-15",
+    "bank_account_last4": "2290",
+    "status": "paid",
+    "paid_on": "2026-05-12",
+    "notes": null
+  },
+  {
+    "id": "H-011",
+    "invoice_no": "SBE/26-27/0149",
+    "vendor_id": "V003",
+    "invoice_date": "2026-05-18",
+    "received_date": "2026-05-20",
+    "po_id": "NF/PO/26-27/0777",
+    "grn_id": "NF/GRN/26-27/0655",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 16,
+        "unit_price": 540.0,
+        "gst_rate": 18,
+        "amount": 8640.0
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 2,
+        "unit_price": 4850.0,
+        "gst_rate": 18,
+        "amount": 9700.0
+      }
+    ],
+    "tax": {
+      "cgst": 1650.6,
+      "sgst": 1650.6,
+      "igst": 0.0
+    },
+    "subtotal": 18340.0,
+    "tax_total": 3301.2,
+    "total": 21641.2,
+    "payment_terms": "NET30",
+    "due_date": "2026-06-17",
+    "bank_account_last4": "2290",
+    "status": "paid",
+    "paid_on": "2026-06-14",
+    "notes": null
+  },
+  {
+    "id": "H-012",
+    "invoice_no": "SBE/26-27/0178",
+    "vendor_id": "V003",
+    "invoice_date": "2026-07-14",
+    "received_date": "2026-07-16",
+    "po_id": "NF/PO/26-27/0784",
+    "grn_id": "NF/GRN/26-27/0660",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 22,
+        "unit_price": 540.0,
+        "gst_rate": 18,
+        "amount": 11880.0
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 1,
+        "unit_price": 4850.0,
+        "gst_rate": 18,
+        "amount": 4850.0
+      }
+    ],
+    "tax": {
+      "cgst": 1505.7,
+      "sgst": 1505.7,
+      "igst": 0.0
+    },
+    "subtotal": 16730.0,
+    "tax_total": 3011.4,
+    "total": 19741.4,
+    "payment_terms": "NET30",
+    "due_date": "2026-08-13",
+    "bank_account_last4": "2290",
+    "status": "paid",
+    "paid_on": "2026-08-10",
+    "notes": null
+  },
+  {
+    "id": "H-013",
+    "invoice_no": "SBE/26-27/0207",
+    "vendor_id": "V003",
+    "invoice_date": "2026-08-20",
+    "received_date": "2026-08-22",
+    "po_id": "NF/PO/26-27/0791",
+    "grn_id": "NF/GRN/26-27/0665",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 18,
+        "unit_price": 540.0,
+        "gst_rate": 18,
+        "amount": 9720.0
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 2,
+        "unit_price": 4850.0,
+        "gst_rate": 18,
+        "amount": 9700.0
+      }
+    ],
+    "tax": {
+      "cgst": 1747.8,
+      "sgst": 1747.8,
+      "igst": 0.0
+    },
+    "subtotal": 19420.0,
+    "tax_total": 3495.6,
+    "total": 22915.6,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-19",
+    "bank_account_last4": "2290",
+    "status": "paid",
+    "paid_on": "2026-09-16",
+    "notes": null
+  },
+  {
+    "id": "H-014",
+    "invoice_no": "MPL/26-27/0905",
+    "vendor_id": "V004",
+    "invoice_date": "2026-05-16",
+    "received_date": "2026-05-18",
+    "po_id": "NF/PO/26-27/0798",
+    "grn_id": "NF/GRN/26-27/0670",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 36,
+        "unit_price": 1150.0,
+        "gst_rate": 18,
+        "amount": 41400.0
+      }
+    ],
+    "tax": {
+      "cgst": 3726.0,
+      "sgst": 3726.0,
+      "igst": 0.0
+    },
+    "subtotal": 41400.0,
+    "tax_total": 7452.0,
+    "total": 48852.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-06-15",
+    "bank_account_last4": "6634",
+    "status": "paid",
+    "paid_on": "2026-06-12",
+    "notes": null
+  },
+  {
+    "id": "H-015",
+    "invoice_no": "MPL/26-27/0996",
+    "vendor_id": "V004",
+    "invoice_date": "2026-06-20",
+    "received_date": "2026-06-22",
+    "po_id": "NF/PO/26-27/0805",
+    "grn_id": "NF/GRN/26-27/0675",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 42,
+        "unit_price": 1150.0,
+        "gst_rate": 18,
+        "amount": 48300.0
+      }
+    ],
+    "tax": {
+      "cgst": 4347.0,
+      "sgst": 4347.0,
+      "igst": 0.0
+    },
+    "subtotal": 48300.0,
+    "tax_total": 8694.0,
+    "total": 56994.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-07-20",
+    "bank_account_last4": "6634",
+    "status": "paid",
+    "paid_on": "2026-07-17",
+    "notes": null
+  },
+  {
+    "id": "H-016",
+    "invoice_no": "MPL/26-27/1087",
+    "vendor_id": "V004",
+    "invoice_date": "2026-07-18",
+    "received_date": "2026-07-20",
+    "po_id": "NF/PO/26-27/0812",
+    "grn_id": "NF/GRN/26-27/0680",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 38,
+        "unit_price": 1150.0,
+        "gst_rate": 18,
+        "amount": 43700.0
+      }
+    ],
+    "tax": {
+      "cgst": 3933.0,
+      "sgst": 3933.0,
+      "igst": 0.0
+    },
+    "subtotal": 43700.0,
+    "tax_total": 7866.0,
+    "total": 51566.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-08-17",
+    "bank_account_last4": "6634",
+    "status": "paid",
+    "paid_on": "2026-08-14",
+    "notes": null
+  },
+  {
+    "id": "H-017",
+    "invoice_no": "MPL/26-27/1187",
+    "vendor_id": "V004",
+    "invoice_date": "2026-08-18",
+    "received_date": "2026-08-20",
+    "po_id": "NF/PO/26-27/0819",
+    "grn_id": "NF/GRN/26-27/0685",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 40,
+        "unit_price": 1150.0,
+        "gst_rate": 18,
+        "amount": 46000.0
+      }
+    ],
+    "tax": {
+      "cgst": 4140.0,
+      "sgst": 4140.0,
+      "igst": 0.0
+    },
+    "subtotal": 46000.0,
+    "tax_total": 8280.0,
+    "total": 54280.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-17",
+    "bank_account_last4": "6634",
+    "status": "paid",
+    "paid_on": "2026-09-14",
+    "notes": null
+  },
+  {
+    "id": "H-018",
+    "invoice_no": "DCC/26-27/0170",
+    "vendor_id": "V005",
+    "invoice_date": "2026-05-08",
+    "received_date": "2026-05-10",
+    "po_id": "NF/PO/26-27/0826",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12,
+        "amount": 38500.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 4620.0
+    },
+    "subtotal": 38500.0,
+    "tax_total": 4620.0,
+    "total": 43120.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-06-07",
+    "bank_account_last4": "1187",
+    "status": "paid",
+    "paid_on": "2026-06-04",
+    "notes": null
+  },
+  {
+    "id": "H-019",
+    "invoice_no": "DCC/26-27/0193",
+    "vendor_id": "V005",
+    "invoice_date": "2026-06-26",
+    "received_date": "2026-06-28",
+    "po_id": "NF/PO/26-27/0833",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12,
+        "amount": 38500.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 4620.0
+    },
+    "subtotal": 38500.0,
+    "tax_total": 4620.0,
+    "total": 43120.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-07-26",
+    "bank_account_last4": "1187",
+    "status": "paid",
+    "paid_on": "2026-07-23",
+    "notes": null
+  },
+  {
+    "id": "H-020",
+    "invoice_no": "DCC/26-27/0216",
+    "vendor_id": "V005",
+    "invoice_date": "2026-08-12",
+    "received_date": "2026-08-14",
+    "po_id": "NF/PO/26-27/0840",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12,
+        "amount": 38500.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 4620.0
+    },
+    "subtotal": 38500.0,
+    "tax_total": 4620.0,
+    "total": 43120.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-11",
+    "bank_account_last4": "1187",
+    "status": "paid",
+    "paid_on": "2026-09-08",
+    "notes": null
+  },
+  {
+    "id": "H-021",
+    "invoice_no": "AAS/26-27/0240",
+    "vendor_id": "V006",
+    "invoice_date": "2026-04-28",
+    "received_date": "2026-04-30",
+    "po_id": "NF/PO/26-27/0847",
+    "grn_id": "NF/GRN/26-27/0690",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 480,
+        "unit_price": 1250.0,
+        "gst_rate": 5,
+        "amount": 600000.0
+      }
+    ],
+    "tax": {
+      "cgst": 15000.0,
+      "sgst": 15000.0,
+      "igst": 0.0
+    },
+    "subtotal": 600000.0,
+    "tax_total": 30000.0,
+    "total": 630000.0,
+    "payment_terms": "NET60",
+    "due_date": "2026-06-27",
+    "bank_account_last4": "5098",
+    "status": "paid",
+    "paid_on": "2026-06-24",
+    "notes": null
+  },
+  {
+    "id": "H-022",
+    "invoice_no": "AAS/26-27/0257",
+    "vendor_id": "V006",
+    "invoice_date": "2026-05-29",
+    "received_date": "2026-05-31",
+    "po_id": "NF/PO/26-27/0854",
+    "grn_id": "NF/GRN/26-27/0695",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 500,
+        "unit_price": 1250.0,
+        "gst_rate": 5,
+        "amount": 625000.0
+      }
+    ],
+    "tax": {
+      "cgst": 15625.0,
+      "sgst": 15625.0,
+      "igst": 0.0
+    },
+    "subtotal": 625000.0,
+    "tax_total": 31250.0,
+    "total": 656250.0,
+    "payment_terms": "NET60",
+    "due_date": "2026-07-28",
+    "bank_account_last4": "5098",
+    "status": "paid",
+    "paid_on": "2026-07-25",
+    "notes": null
+  },
+  {
+    "id": "H-023",
+    "invoice_no": "AAS/26-27/0274",
+    "vendor_id": "V006",
+    "invoice_date": "2026-07-01",
+    "received_date": "2026-07-03",
+    "po_id": "NF/PO/26-27/0861",
+    "grn_id": "NF/GRN/26-27/0700",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 450,
+        "unit_price": 1250.0,
+        "gst_rate": 5,
+        "amount": 562500.0
+      }
+    ],
+    "tax": {
+      "cgst": 14062.5,
+      "sgst": 14062.5,
+      "igst": 0.0
+    },
+    "subtotal": 562500.0,
+    "tax_total": 28125.0,
+    "total": 590625.0,
+    "payment_terms": "NET60",
+    "due_date": "2026-08-30",
+    "bank_account_last4": "5098",
+    "status": "paid",
+    "paid_on": "2026-08-27",
+    "notes": null
+  },
+  {
+    "id": "H-024",
+    "invoice_no": "AAS/26-27/0291",
+    "vendor_id": "V006",
+    "invoice_date": "2026-08-03",
+    "received_date": "2026-08-05",
+    "po_id": "NF/PO/26-27/0868",
+    "grn_id": "NF/GRN/26-27/0705",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 520,
+        "unit_price": 1250.0,
+        "gst_rate": 5,
+        "amount": 650000.0
+      }
+    ],
+    "tax": {
+      "cgst": 16250.0,
+      "sgst": 16250.0,
+      "igst": 0.0
+    },
+    "subtotal": 650000.0,
+    "tax_total": 32500.0,
+    "total": 682500.0,
+    "payment_terms": "NET60",
+    "due_date": "2026-10-02",
+    "bank_account_last4": "5098",
+    "status": "paid",
+    "paid_on": "2026-09-29",
+    "notes": null
+  },
+  {
+    "id": "H-025",
+    "invoice_no": "VIT/26-27/0060",
+    "vendor_id": "V008",
+    "invoice_date": "2026-05-31",
+    "received_date": "2026-06-02",
+    "po_id": "NF/PO/26-27/0875",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18,
+        "amount": 50000.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 9000.0
+    },
+    "subtotal": 50000.0,
+    "tax_total": 9000.0,
+    "total": 59000.0,
+    "payment_terms": "NET45",
+    "due_date": "2026-07-15",
+    "bank_account_last4": "3308",
+    "status": "paid",
+    "paid_on": "2026-07-12",
+    "notes": null
+  },
+  {
+    "id": "H-026",
+    "invoice_no": "VIT/26-27/0071",
+    "vendor_id": "V008",
+    "invoice_date": "2026-06-30",
+    "received_date": "2026-07-02",
+    "po_id": "NF/PO/26-27/0882",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18,
+        "amount": 50000.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 9000.0
+    },
+    "subtotal": 50000.0,
+    "tax_total": 9000.0,
+    "total": 59000.0,
+    "payment_terms": "NET45",
+    "due_date": "2026-08-14",
+    "bank_account_last4": "3308",
+    "status": "paid",
+    "paid_on": "2026-08-11",
+    "notes": null
+  },
+  {
+    "id": "H-027",
+    "invoice_no": "VIT/26-27/0082",
+    "vendor_id": "V008",
+    "invoice_date": "2026-07-31",
+    "received_date": "2026-08-02",
+    "po_id": "NF/PO/26-27/0889",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18,
+        "amount": 50000.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 9000.0
+    },
+    "subtotal": 50000.0,
+    "tax_total": 9000.0,
+    "total": 59000.0,
+    "payment_terms": "NET45",
+    "due_date": "2026-09-14",
+    "bank_account_last4": "3308",
+    "status": "paid",
+    "paid_on": "2026-09-11",
+    "notes": null
+  },
+  {
+    "id": "H-028",
+    "invoice_no": "VIT/26-27/0093",
+    "vendor_id": "V008",
+    "invoice_date": "2026-08-31",
+    "received_date": "2026-09-02",
+    "po_id": "NF/PO/26-27/0896",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18,
+        "amount": 50000.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 9000.0
+    },
+    "subtotal": 50000.0,
+    "tax_total": 9000.0,
+    "total": 59000.0,
+    "payment_terms": "NET45",
+    "due_date": "2026-10-15",
+    "bank_account_last4": "3308",
+    "status": "paid",
+    "paid_on": "2026-10-12",
+    "notes": null
+  },
+  {
+    "id": "H-029",
+    "invoice_no": "PIS/26-27/0330",
+    "vendor_id": "V009",
+    "invoice_date": "2026-05-21",
+    "received_date": "2026-05-23",
+    "po_id": "NF/PO/26-27/0903",
+    "grn_id": "NF/GRN/26-27/0710",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 3,
+        "unit_price": 14500.0,
+        "gst_rate": 18,
+        "amount": 43500.0
+      }
+    ],
+    "tax": {
+      "cgst": 3915.0,
+      "sgst": 3915.0,
+      "igst": 0.0
+    },
+    "subtotal": 43500.0,
+    "tax_total": 7830.0,
+    "total": 51330.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-06-20",
+    "bank_account_last4": "8841",
+    "status": "paid",
+    "paid_on": "2026-06-17",
+    "notes": null
+  },
+  {
+    "id": "H-030",
+    "invoice_no": "PIS/26-27/0356",
+    "vendor_id": "V009",
+    "invoice_date": "2026-07-02",
+    "received_date": "2026-07-04",
+    "po_id": "NF/PO/26-27/0910",
+    "grn_id": "NF/GRN/26-27/0715",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 2,
+        "unit_price": 14500.0,
+        "gst_rate": 18,
+        "amount": 29000.0
+      }
+    ],
+    "tax": {
+      "cgst": 2610.0,
+      "sgst": 2610.0,
+      "igst": 0.0
+    },
+    "subtotal": 29000.0,
+    "tax_total": 5220.0,
+    "total": 34220.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-08-01",
+    "bank_account_last4": "8841",
+    "status": "paid",
+    "paid_on": "2026-07-29",
+    "notes": null
+  },
+  {
+    "id": "H-031",
+    "invoice_no": "PIS/26-27/0382",
+    "vendor_id": "V009",
+    "invoice_date": "2026-08-26",
+    "received_date": "2026-08-28",
+    "po_id": "NF/PO/26-27/0917",
+    "grn_id": "NF/GRN/26-27/0720",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 3,
+        "unit_price": 14500.0,
+        "gst_rate": 18,
+        "amount": 43500.0
+      }
+    ],
+    "tax": {
+      "cgst": 3915.0,
+      "sgst": 3915.0,
+      "igst": 0.0
+    },
+    "subtotal": 43500.0,
+    "tax_total": 7830.0,
+    "total": 51330.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-25",
+    "bank_account_last4": "8841",
+    "status": "paid",
+    "paid_on": "2026-09-22",
+    "notes": null
+  },
+  {
+    "id": "INV-2001",
+    "invoice_no": "SGP/26-27/0412",
+    "vendor_id": "V001",
+    "invoice_date": "2026-09-08",
+    "received_date": "2026-09-10",
+    "po_id": "NF/PO/26-27/0924",
+    "grn_id": "NF/GRN/26-27/0725",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 2000,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 70000.0
+      }
+    ],
+    "tax": {
+      "cgst": 6300.0,
+      "sgst": 6300.0,
+      "igst": 0.0
+    },
+    "subtotal": 70000.0,
+    "tax_total": 12600.0,
+    "total": 82600.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-08",
+    "bank_account_last4": "4417",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "Amount spike backed by an amended PO (first time)"
+  },
+  {
+    "id": "INV-2002",
+    "invoice_no": "SGP/26-27/0539",
+    "vendor_id": "V001",
+    "invoice_date": "2026-09-24",
+    "received_date": "2026-09-26",
+    "po_id": "NF/PO/26-27/0931",
+    "grn_id": "NF/GRN/26-27/0730",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 2200,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 77000.0
+      }
+    ],
+    "tax": {
+      "cgst": 6930.0,
+      "sgst": 6930.0,
+      "igst": 0.0
+    },
+    "subtotal": 77000.0,
+    "tax_total": 13860.0,
+    "total": 90860.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-24",
+    "bank_account_last4": "4417",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "Repeat amount spike, PO amended again"
+  },
+  {
+    "id": "INV-2003",
+    "invoice_no": "SGP/26-27/0581",
+    "vendor_id": "V001",
+    "invoice_date": "2026-09-27",
+    "received_date": "2026-09-29",
+    "po_id": "NF/PO/26-27/0938",
+    "grn_id": "NF/GRN/26-27/0735",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 2100,
+        "unit_price": 35.0,
+        "gst_rate": 18,
+        "amount": 73500.0
+      }
+    ],
+    "tax": {
+      "cgst": 6615.0,
+      "sgst": 6615.0,
+      "igst": 0.0
+    },
+    "subtotal": 73500.0,
+    "tax_total": 13230.0,
+    "total": 86730.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-27",
+    "bank_account_last4": "4417",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "Amount spike NOT backed by PO or goods receipt"
+  },
+  {
+    "id": "INV-2004",
+    "invoice_no": "SBE/26-27/0241",
+    "vendor_id": "V003",
+    "invoice_date": "2026-09-16",
+    "received_date": "2026-09-18",
+    "po_id": "NF/PO/26-27/0945",
+    "grn_id": "NF/GRN/26-27/0740",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 18,
+        "unit_price": 540.0,
+        "gst_rate": 18,
+        "amount": 9720.0
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 1,
+        "unit_price": 4850.0,
+        "gst_rate": 18,
+        "amount": 4850.0
+      }
+    ],
+    "tax": {
+      "cgst": 1311.3,
+      "sgst": 1311.3,
+      "igst": 0.0
+    },
+    "subtotal": 14570.0,
+    "tax_total": 2622.6,
+    "total": 17192.6,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-16",
+    "bank_account_last4": "2290",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "Clean three-way match"
+  },
+  {
+    "id": "INV-2005",
+    "invoice_no": "KST/26-27/0402",
+    "vendor_id": "V002",
+    "invoice_date": "2026-09-19",
+    "received_date": "2026-09-21",
+    "po_id": "NF/PO/26-27/0952",
+    "grn_id": "NF/GRN/26-27/0745",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 560,
+        "unit_price": 248.0,
+        "gst_rate": 18,
+        "amount": 138880.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 24998.4
+    },
+    "subtotal": 138880.0,
+    "tax_total": 24998.4,
+    "total": 163878.4,
+    "payment_terms": "NET45",
+    "due_date": "2026-11-03",
+    "bank_account_last4": "7702",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "Unit price 4.2% above PO"
+  },
+  {
+    "id": "INV-2006",
+    "invoice_no": "MPL/26-27/1187/R1",
+    "vendor_id": "V004",
+    "invoice_date": "2026-08-18",
+    "received_date": "2026-08-20",
+    "po_id": "NF/PO/26-27/0819",
+    "grn_id": "NF/GRN/26-27/0685",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 40,
+        "unit_price": 1150.0,
+        "gst_rate": 18,
+        "amount": 46000.0
+      }
+    ],
+    "tax": {
+      "cgst": 4140.0,
+      "sgst": 4140.0,
+      "igst": 0.0
+    },
+    "subtotal": 46000.0,
+    "tax_total": 8280.0,
+    "total": 54280.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-09-17",
+    "bank_account_last4": "6634",
+    "status": "pending",
+    "paid_on": null,
+    "notes": "Resubmitted copy. Payment not received as per our records.",
+    "scenario": "Possible duplicate of a paid invoice"
+  },
+  {
+    "id": "INV-2007",
+    "invoice_no": "PIS/26-27/0409",
+    "vendor_id": "V009",
+    "invoice_date": "2026-09-18",
+    "received_date": "2026-09-20",
+    "po_id": "NF/PO/26-27/0959",
+    "grn_id": "NF/GRN/26-27/0750",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 3,
+        "unit_price": 14500.0,
+        "gst_rate": 18,
+        "amount": 43500.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 7830.0
+    },
+    "subtotal": 43500.0,
+    "tax_total": 7830.0,
+    "total": 51330.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-18",
+    "bank_account_last4": "8841",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "IGST on an intra-state supply"
+  },
+  {
+    "id": "INV-2008",
+    "invoice_no": "DCC/26-27/0256",
+    "vendor_id": "V005",
+    "invoice_date": "2026-09-21",
+    "received_date": "2026-09-23",
+    "po_id": null,
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12,
+        "amount": 38500.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 4620.0
+    },
+    "subtotal": 38500.0,
+    "tax_total": 4620.0,
+    "total": 43120.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-21",
+    "bank_account_last4": "1187",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "Service invoice without a purchase order"
+  },
+  {
+    "id": "INV-2009",
+    "invoice_no": "AAS/26-27/0318",
+    "vendor_id": "V006",
+    "invoice_date": "2026-09-12",
+    "received_date": "2026-09-14",
+    "po_id": "NF/PO/26-27/0966",
+    "grn_id": "NF/GRN/26-27/0755",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 520,
+        "unit_price": 1250.0,
+        "gst_rate": 5,
+        "amount": 650000.0
+      }
+    ],
+    "tax": {
+      "cgst": 16250.0,
+      "sgst": 16250.0,
+      "igst": 0.0
+    },
+    "subtotal": 650000.0,
+    "tax_total": 32500.0,
+    "total": 682500.0,
+    "payment_terms": "NET60",
+    "due_date": "2026-11-11",
+    "bank_account_last4": "5098",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "Above CFO approval threshold"
+  },
+  {
+    "id": "INV-2010",
+    "invoice_no": "KLI/26-27/0007",
+    "vendor_id": "V007",
+    "invoice_date": "2026-09-23",
+    "received_date": "2026-09-25",
+    "po_id": "NF/PO/26-27/0973",
+    "grn_id": "NF/GRN/26-27/0760",
+    "lines": [
+      {
+        "item_code": "MOIST-AN",
+        "description": "Moisture analyzer MA-110",
+        "hsn": "9027",
+        "unit": "pcs",
+        "qty": 1,
+        "unit_price": 120000.0,
+        "gst_rate": 18,
+        "amount": 120000.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 21600.0
+    },
+    "subtotal": 120000.0,
+    "tax_total": 21600.0,
+    "total": 141600.0,
+    "payment_terms": "NET60",
+    "due_date": "2026-11-22",
+    "bank_account_last4": "0453",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "New MSME vendor, invoice terms beyond 45 days"
+  },
+  {
+    "id": "INV-2011",
+    "invoice_no": "VIT/26-27/0104",
+    "vendor_id": "V008",
+    "invoice_date": "2026-09-28",
+    "received_date": "2026-09-30",
+    "po_id": "NF/PO/26-27/0980",
+    "grn_id": null,
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18,
+        "amount": 50000.0
+      }
+    ],
+    "tax": {
+      "cgst": 0.0,
+      "sgst": 0.0,
+      "igst": 9000.0
+    },
+    "subtotal": 50000.0,
+    "tax_total": 9000.0,
+    "total": 59000.0,
+    "payment_terms": "NET45",
+    "due_date": "2026-11-12",
+    "bank_account_last4": "9921",
+    "status": "pending",
+    "paid_on": null,
+    "notes": "Please note our updated bank details for this and future payments.",
+    "scenario": "Bank details changed on invoice"
+  },
+  {
+    "id": "INV-2012",
+    "invoice_no": "SBE/26-27/0258",
+    "vendor_id": "V003",
+    "invoice_date": "2026-09-25",
+    "received_date": "2026-09-27",
+    "po_id": "NF/PO/26-27/0987",
+    "grn_id": "NF/GRN/26-27/0765",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 10,
+        "unit_price": 540.0,
+        "gst_rate": 18,
+        "amount": 5400.0
+      }
+    ],
+    "tax": {
+      "cgst": 486.0,
+      "sgst": 486.0,
+      "igst": 0.0
+    },
+    "subtotal": 5400.0,
+    "tax_total": 972.0,
+    "total": 6372.0,
+    "payment_terms": "NET30",
+    "due_date": "2026-10-25",
+    "bank_account_last4": "2290",
+    "status": "pending",
+    "paid_on": null,
+    "notes": null,
+    "scenario": "Unusually low amount, partial delivery"
+  }
+]

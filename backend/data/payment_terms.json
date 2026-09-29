@@ -1,0 +1,27 @@
+[
+  {
+    "code": "IMMEDIATE",
+    "days": 0,
+    "description": "Payable on receipt"
+  },
+  {
+    "code": "NET15",
+    "days": 15,
+    "description": "Payable within 15 days of invoice date"
+  },
+  {
+    "code": "NET30",
+    "days": 30,
+    "description": "Payable within 30 days of invoice date"
+  },
+  {
+    "code": "NET45",
+    "days": 45,
+    "description": "Payable within 45 days of invoice date"
+  },
+  {
+    "code": "NET60",
+    "days": 60,
+    "description": "Payable within 60 days of invoice date"
+  }
+]

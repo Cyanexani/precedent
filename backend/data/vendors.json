@@ -1,0 +1,209 @@
+[
+  {
+    "id": "V001",
+    "name": "Shree Ganesh Packaging Pvt Ltd",
+    "gstin": "27AAKCS8124F1Z6",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "state_code": "27",
+    "category": "Corrugated packaging",
+    "supply_type": "goods",
+    "msme": true,
+    "udyam_no": "UDYAM-MH-26-0048213",
+    "payment_terms": "NET30",
+    "onboarded_on": "2023-04-10",
+    "bank": {
+      "bank_name": "HDFC Bank",
+      "account_last4": "4417",
+      "ifsc": "HDFC0001289"
+    },
+    "contact": {
+      "name": "Ganesh Kulkarni",
+      "phone": "+91 98220 41173"
+    }
+  },
+  {
+    "id": "V002",
+    "name": "Krishna Steel Traders",
+    "gstin": "24AAIFK3391L1ZP",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "state_code": "24",
+    "category": "Stainless steel sheets and fittings",
+    "supply_type": "goods",
+    "msme": false,
+    "udyam_no": null,
+    "payment_terms": "NET45",
+    "onboarded_on": "2022-11-02",
+    "bank": {
+      "bank_name": "ICICI Bank",
+      "account_last4": "7702",
+      "ifsc": "ICIC0000451"
+    },
+    "contact": {
+      "name": "Hitesh Patel",
+      "phone": "+91 98250 66120"
+    }
+  },
+  {
+    "id": "V003",
+    "name": "Sai Balaji Electricals",
+    "gstin": "27ABXPS6612H1ZK",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "state_code": "27",
+    "category": "Electrical maintenance supplies",
+    "supply_type": "goods",
+    "msme": true,
+    "udyam_no": "UDYAM-MH-26-0102277",
+    "payment_terms": "NET30",
+    "onboarded_on": "2024-01-15",
+    "bank": {
+      "bank_name": "State Bank of India",
+      "account_last4": "2290",
+      "ifsc": "SBIN0004418"
+    },
+    "contact": {
+      "name": "Balaji Shinde",
+      "phone": "+91 97640 22381"
+    }
+  },
+  {
+    "id": "V004",
+    "name": "Mehta Printers & Labels",
+    "gstin": "27AAHFM2208Q1Z9",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "state_code": "27",
+    "category": "Printed labels",
+    "supply_type": "goods",
+    "msme": true,
+    "udyam_no": "UDYAM-MH-19-0031540",
+    "payment_terms": "NET30",
+    "onboarded_on": "2023-08-21",
+    "bank": {
+      "bank_name": "Kotak Mahindra Bank",
+      "account_last4": "6634",
+      "ifsc": "KKBK0000652"
+    },
+    "contact": {
+      "name": "Rakesh Mehta",
+      "phone": "+91 98200 13457"
+    }
+  },
+  {
+    "id": "V005",
+    "name": "Deccan Cold Chain Logistics Pvt Ltd",
+    "gstin": "36AAECD7419B1ZX",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "state_code": "36",
+    "category": "Refrigerated transport",
+    "supply_type": "services",
+    "msme": false,
+    "udyam_no": null,
+    "payment_terms": "NET30",
+    "onboarded_on": "2024-06-03",
+    "bank": {
+      "bank_name": "Axis Bank",
+      "account_last4": "1187",
+      "ifsc": "UTIB0000733"
+    },
+    "contact": {
+      "name": "Srinivas Reddy",
+      "phone": "+91 99490 55218"
+    }
+  },
+  {
+    "id": "V006",
+    "name": "Annapurna Agro Suppliers",
+    "gstin": "27AAQFA5530M1ZC",
+    "city": "Nashik",
+    "state": "Maharashtra",
+    "state_code": "27",
+    "category": "Edible oils and agri inputs",
+    "supply_type": "goods",
+    "msme": false,
+    "udyam_no": null,
+    "payment_terms": "NET60",
+    "onboarded_on": "2021-07-12",
+    "bank": {
+      "bank_name": "Bank of Maharashtra",
+      "account_last4": "5098",
+      "ifsc": "MAHB0000217"
+    },
+    "contact": {
+      "name": "Suresh Jadhav",
+      "phone": "+91 94220 70914"
+    }
+  },
+  {
+    "id": "V007",
+    "name": "Kaveri Lab Instruments",
+    "gstin": "29AAGCK9087N1ZT",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "state_code": "29",
+    "category": "Laboratory equipment",
+    "supply_type": "goods",
+    "msme": true,
+    "udyam_no": "UDYAM-KA-03-0219954",
+    "payment_terms": "NET30",
+    "onboarded_on": "2026-09-15",
+    "bank": {
+      "bank_name": "Canara Bank",
+      "account_last4": "0453",
+      "ifsc": "CNRB0002671"
+    },
+    "contact": {
+      "name": "Deepa Raghavan",
+      "phone": "+91 99801 38842"
+    }
+  },
+  {
+    "id": "V008",
+    "name": "Vyom IT Solutions LLP",
+    "gstin": "36AAPFV1123C1ZL",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "state_code": "36",
+    "category": "IT support and AMC",
+    "supply_type": "services",
+    "msme": false,
+    "udyam_no": null,
+    "payment_terms": "NET45",
+    "onboarded_on": "2023-02-01",
+    "bank": {
+      "bank_name": "HDFC Bank",
+      "account_last4": "3308",
+      "ifsc": "HDFC0000521"
+    },
+    "contact": {
+      "name": "Karthik Varma",
+      "phone": "+91 90000 48127"
+    }
+  },
+  {
+    "id": "V009",
+    "name": "Pawar Industrial Supplies",
+    "gstin": "27AFCPP4410D1ZM",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "state_code": "27",
+    "category": "Industrial hardware",
+    "supply_type": "goods",
+    "msme": true,
+    "udyam_no": "UDYAM-MH-26-0187730",
+    "payment_terms": "NET30",
+    "onboarded_on": "2024-10-07",
+    "bank": {
+      "bank_name": "Union Bank of India",
+      "account_last4": "8841",
+      "ifsc": "UBIN0531219"
+    },
+    "contact": {
+      "name": "Sachin Pawar",
+      "phone": "+91 98901 27764"
+    }
+  }
+]

@@ -1,0 +1,139 @@
+[
+  {
+    "case_id": "CASE-KST-26-27-0318",
+    "vendor_id": "V002",
+    "invoice_no": "KST/26-27/0318",
+    "invoice_date": "2026-07-14",
+    "resolved_on": "2026-07-18",
+    "reviewer": "Priya Nair",
+    "total": 152278.8,
+    "exception_codes": [
+      "PRICE_VARIANCE"
+    ],
+    "decision": "approve_with_conditions",
+    "summary": "SS304 sheet billed at Rs 246 per kg against PO rate Rs 238 per kg, a 3.4% variance above the 2% tolerance.",
+    "reason": "Rate contract RC-KST-2026 has a steel price escalation clause that allows pass-through of up to 5% when the JPC stainless index rises. Anil Deshmukh from procurement confirmed the index movement for July.",
+    "evidence": [
+      "Rate contract clause 7.2 checked",
+      "JPC index sheet for July attached",
+      "Procurement confirmation email"
+    ],
+    "conditions": [
+      "Variance above 5% must be rejected",
+      "Attach the index sheet to every escalated invoice"
+    ]
+  },
+  {
+    "case_id": "CASE-SBE-26-27-0144",
+    "vendor_id": "V003",
+    "invoice_no": "SBE/26-27/0144",
+    "invoice_date": "2026-06-02",
+    "resolved_on": "2026-06-05",
+    "reviewer": "Arjun Menon",
+    "total": 21712.0,
+    "exception_codes": [
+      "GST_MISMATCH"
+    ],
+    "decision": "reject",
+    "summary": "Pune vendor charged IGST 18% on a supply to our Pune plant. Place of supply is Maharashtra, so CGST 9% plus SGST 9% was due.",
+    "reason": "Wrong tax head blocks our input tax credit. Vendor issued credit note CN/26-27/014 and reissued the invoice with CGST and SGST, which was then paid.",
+    "evidence": [
+      "Vendor GSTIN state code 27 matches ours",
+      "Credit note received",
+      "Corrected invoice received"
+    ],
+    "conditions": []
+  },
+  {
+    "case_id": "CASE-MPL-26-27-0942-R1",
+    "vendor_id": "V004",
+    "invoice_no": "MPL/26-27/0942/R1",
+    "invoice_date": "2026-06-01",
+    "resolved_on": "2026-06-12",
+    "reviewer": "Priya Nair",
+    "total": 41300.0,
+    "exception_codes": [
+      "DUPLICATE_SUSPECTED"
+    ],
+    "decision": "reject",
+    "summary": "Invoice MPL/26-27/0942/R1 had the same amount, date and PO as MPL/26-27/0942, which was already paid on 2026-06-02.",
+    "reason": "Vendor billing team resubmitted with an /R1 suffix after their payment reconciliation lagged. Confirmed UTR of the original payment with the vendor and rejected the copy.",
+    "evidence": [
+      "Original payment UTR shared with vendor",
+      "Vendor confirmed resubmission in error"
+    ],
+    "conditions": [
+      "Ask vendor to check the supplier payment portal before resubmitting"
+    ]
+  },
+  {
+    "case_id": "CASE-DCC-26-27-0211",
+    "vendor_id": "V005",
+    "invoice_no": "DCC/26-27/0211",
+    "invoice_date": "2026-06-29",
+    "resolved_on": "2026-07-02",
+    "reviewer": "Arjun Menon",
+    "total": 43120.0,
+    "exception_codes": [
+      "MISSING_PO"
+    ],
+    "decision": "approve_with_conditions",
+    "summary": "Ad-hoc reefer truck trip billed without a purchase order during a cold storage breakdown at the Chakan plant.",
+    "reason": "Plant head Sunita Rao gave written retro approval for the emergency trip. The rate matched the last three Deccan Cold Chain trips.",
+    "evidence": [
+      "Retro approval email from plant head",
+      "Trip sheet and delivery challan",
+      "Rate compared with previous trips"
+    ],
+    "conditions": [
+      "Retro PO to be raised within 7 days",
+      "Recurring ad-hoc trips should move to a rate contract"
+    ]
+  },
+  {
+    "case_id": "CASE-AAS-26-27-0287",
+    "vendor_id": "V006",
+    "invoice_no": "AAS/26-27/0287",
+    "invoice_date": "2026-08-08",
+    "resolved_on": "2026-08-11",
+    "reviewer": "Priya Nair",
+    "total": 525000.0,
+    "exception_codes": [
+      "BANK_DETAILS_CHANGED"
+    ],
+    "decision": "reject",
+    "summary": "Invoice arrived by email asking for payment to a new ICICI account instead of the Bank of Maharashtra account on the vendor master.",
+    "reason": "Call-back to the phone number on the vendor master confirmed Annapurna Agro had NOT changed banks. The email came from a look-alike domain. This was an attempted payment diversion fraud and was reported to IT security.",
+    "evidence": [
+      "Call-back on vendor master phone number",
+      "Email header check showed look-alike domain",
+      "Reported to IT security"
+    ],
+    "conditions": [
+      "Never update bank details from an invoice or email",
+      "Always call back on the vendor master number before paying a changed account"
+    ]
+  },
+  {
+    "case_id": "CASE-AAS-26-27-0206",
+    "vendor_id": "V006",
+    "invoice_no": "AAS/26-27/0206",
+    "invoice_date": "2026-05-19",
+    "resolved_on": "2026-05-22",
+    "reviewer": "Priya Nair",
+    "total": 656250.0,
+    "exception_codes": [
+      "APPROVAL_CFO"
+    ],
+    "decision": "approve",
+    "summary": "Sunflower oil invoice above Rs 5 lakh routed to the CFO for approval after a clean three-way match.",
+    "reason": "Seasonal oil stocking ahead of the monsoon production plan. CFO Rajesh Iyer approved and asked AP to bundle such invoices into the weekly CFO approval batch.",
+    "evidence": [
+      "Three-way match clean",
+      "CFO approval on weekly batch"
+    ],
+    "conditions": [
+      "Route large edible oil invoices through the weekly CFO batch"
+    ]
+  }
+]

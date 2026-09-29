@@ -1,0 +1,60 @@
+{
+  "currency": "INR",
+  "tiers": [
+    {
+      "max_amount": 100000,
+      "approver_role": "AP Executive",
+      "level": 1
+    },
+    {
+      "max_amount": 500000,
+      "approver_role": "Finance Manager",
+      "level": 2
+    },
+    {
+      "max_amount": null,
+      "approver_role": "CFO",
+      "level": 3
+    }
+  ],
+  "escalations": [
+    {
+      "when": "new_vendor",
+      "min_level": 2,
+      "reason": "Vendor onboarded less than 90 days ago"
+    },
+    {
+      "when": "high_severity_finding",
+      "min_level": 2,
+      "reason": "Invoice has a high severity exception"
+    },
+    {
+      "when": "bank_details_changed",
+      "min_level": 3,
+      "reason": "Bank details differ from vendor master"
+    },
+    {
+      "when": "missing_po",
+      "min_level": 2,
+      "reason": "Non-PO invoice needs cost centre owner approval"
+    }
+  ],
+  "tolerances": {
+    "price_variance_pct": 2.0,
+    "amount_spike_ratio": 1.4,
+    "amount_low_ratio": 0.6,
+    "baseline_min_invoices": 3,
+    "duplicate_amount_pct": 1.0,
+    "duplicate_window_days": 10,
+    "new_vendor_days": 90,
+    "rounding_tolerance_inr": 1.0
+  },
+  "gst_rates": [
+    0,
+    5,
+    12,
+    18,
+    28
+  ],
+  "msme_max_payment_days": 45
+}

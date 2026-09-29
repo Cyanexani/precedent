@@ -1,0 +1,840 @@
+[
+  {
+    "id": "NF/PO/26-27/0707",
+    "vendor_id": "V001",
+    "po_date": "2026-03-28",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1200,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0714",
+    "vendor_id": "V001",
+    "po_date": "2026-04-29",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1300,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0721",
+    "vendor_id": "V001",
+    "po_date": "2026-05-29",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1250,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0728",
+    "vendor_id": "V001",
+    "po_date": "2026-06-27",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1400,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0735",
+    "vendor_id": "V001",
+    "po_date": "2026-07-26",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1150,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0742",
+    "vendor_id": "V002",
+    "po_date": "2026-04-10",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 500,
+        "unit_price": 238.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0749",
+    "vendor_id": "V002",
+    "po_date": "2026-05-15",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 620,
+        "unit_price": 238.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0756",
+    "vendor_id": "V002",
+    "po_date": "2026-06-12",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 540,
+        "unit_price": 238.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0763",
+    "vendor_id": "V002",
+    "po_date": "2026-08-07",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 580,
+        "unit_price": 238.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0770",
+    "vendor_id": "V003",
+    "po_date": "2026-04-03",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 20,
+        "unit_price": 540.0,
+        "gst_rate": 18
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 1,
+        "unit_price": 4850.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0777",
+    "vendor_id": "V003",
+    "po_date": "2026-05-06",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 16,
+        "unit_price": 540.0,
+        "gst_rate": 18
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 2,
+        "unit_price": 4850.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0784",
+    "vendor_id": "V003",
+    "po_date": "2026-07-02",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 22,
+        "unit_price": 540.0,
+        "gst_rate": 18
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 1,
+        "unit_price": 4850.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0791",
+    "vendor_id": "V003",
+    "po_date": "2026-08-08",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 18,
+        "unit_price": 540.0,
+        "gst_rate": 18
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 2,
+        "unit_price": 4850.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0798",
+    "vendor_id": "V004",
+    "po_date": "2026-05-04",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 36,
+        "unit_price": 1150.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0805",
+    "vendor_id": "V004",
+    "po_date": "2026-06-08",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 42,
+        "unit_price": 1150.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0812",
+    "vendor_id": "V004",
+    "po_date": "2026-07-06",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 38,
+        "unit_price": 1150.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0819",
+    "vendor_id": "V004",
+    "po_date": "2026-08-06",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "LBL-ROLL",
+        "description": "Printed BOPP label roll, 1000 labels",
+        "hsn": "4821",
+        "unit": "roll",
+        "qty": 40,
+        "unit_price": 1150.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0826",
+    "vendor_id": "V005",
+    "po_date": "2026-04-26",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0833",
+    "vendor_id": "V005",
+    "po_date": "2026-06-14",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0840",
+    "vendor_id": "V005",
+    "po_date": "2026-07-31",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "REEFER-TRIP",
+        "description": "Reefer truck trip Hyderabad to Pune, 20 ft",
+        "hsn": "9965",
+        "unit": "trip",
+        "qty": 1,
+        "unit_price": 38500.0,
+        "gst_rate": 12
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0847",
+    "vendor_id": "V006",
+    "po_date": "2026-04-16",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 480,
+        "unit_price": 1250.0,
+        "gst_rate": 5
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0854",
+    "vendor_id": "V006",
+    "po_date": "2026-05-17",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 500,
+        "unit_price": 1250.0,
+        "gst_rate": 5
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0861",
+    "vendor_id": "V006",
+    "po_date": "2026-06-19",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 450,
+        "unit_price": 1250.0,
+        "gst_rate": 5
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0868",
+    "vendor_id": "V006",
+    "po_date": "2026-07-22",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 520,
+        "unit_price": 1250.0,
+        "gst_rate": 5
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0875",
+    "vendor_id": "V008",
+    "po_date": "2026-05-19",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0882",
+    "vendor_id": "V008",
+    "po_date": "2026-06-18",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0889",
+    "vendor_id": "V008",
+    "po_date": "2026-07-19",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0896",
+    "vendor_id": "V008",
+    "po_date": "2026-08-19",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0903",
+    "vendor_id": "V009",
+    "po_date": "2026-05-09",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 3,
+        "unit_price": 14500.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0910",
+    "vendor_id": "V009",
+    "po_date": "2026-06-20",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 2,
+        "unit_price": 14500.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0917",
+    "vendor_id": "V009",
+    "po_date": "2026-08-14",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 3,
+        "unit_price": 14500.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0924",
+    "vendor_id": "V001",
+    "po_date": "2026-08-20",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 2000,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": [
+      {
+        "date": "2026-08-28",
+        "by": "Rohan Kulkarni, Procurement",
+        "change": "BOX-5PLY quantity revised from 1,200 to 2,000 pcs",
+        "reason": "Festive season dispatch plan, bulk order"
+      }
+    ]
+  },
+  {
+    "id": "NF/PO/26-27/0931",
+    "vendor_id": "V001",
+    "po_date": "2026-09-10",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 2200,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": [
+      {
+        "date": "2026-09-16",
+        "by": "Rohan Kulkarni, Procurement",
+        "change": "BOX-5PLY quantity revised from 1,300 to 2,200 pcs",
+        "reason": "Festive season dispatch plan, bulk order"
+      }
+    ]
+  },
+  {
+    "id": "NF/PO/26-27/0938",
+    "vendor_id": "V001",
+    "po_date": "2026-09-18",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "BOX-5PLY",
+        "description": "5-ply corrugated box 18x12x10 in",
+        "hsn": "4819",
+        "unit": "pcs",
+        "qty": 1200,
+        "unit_price": 35.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0945",
+    "vendor_id": "V003",
+    "po_date": "2026-09-04",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 18,
+        "unit_price": 540.0,
+        "gst_rate": 18
+      },
+      {
+        "item_code": "CABLE-4SQ",
+        "description": "Copper cable 4 sq mm, 90 m coil",
+        "hsn": "8544",
+        "unit": "coil",
+        "qty": 1,
+        "unit_price": 4850.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0952",
+    "vendor_id": "V002",
+    "po_date": "2026-09-02",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SS304-SHEET",
+        "description": "SS304 sheet 2 mm",
+        "hsn": "7219",
+        "unit": "kg",
+        "qty": 560,
+        "unit_price": 238.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0959",
+    "vendor_id": "V009",
+    "po_date": "2026-09-05",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "PALLET-TRK",
+        "description": "Hand pallet truck 2.5 T",
+        "hsn": "8427",
+        "unit": "pcs",
+        "qty": 3,
+        "unit_price": 14500.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0966",
+    "vendor_id": "V006",
+    "po_date": "2026-08-30",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "SFO-15L",
+        "description": "Refined sunflower oil, 15 L tin",
+        "hsn": "1512",
+        "unit": "tin",
+        "qty": 520,
+        "unit_price": 1250.0,
+        "gst_rate": 5
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0973",
+    "vendor_id": "V007",
+    "po_date": "2026-09-16",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MOIST-AN",
+        "description": "Moisture analyzer MA-110",
+        "hsn": "9027",
+        "unit": "pcs",
+        "qty": 1,
+        "unit_price": 120000.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0980",
+    "vendor_id": "V008",
+    "po_date": "2026-09-01",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "IT-AMC",
+        "description": "IT infrastructure AMC, monthly",
+        "hsn": "9987",
+        "unit": "month",
+        "qty": 1,
+        "unit_price": 50000.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  },
+  {
+    "id": "NF/PO/26-27/0987",
+    "vendor_id": "V003",
+    "po_date": "2026-09-12",
+    "status": "open",
+    "requested_by": "Stores, Chakan plant",
+    "lines": [
+      {
+        "item_code": "MCB-32A",
+        "description": "MCB 32A double pole",
+        "hsn": "8536",
+        "unit": "pcs",
+        "qty": 60,
+        "unit_price": 540.0,
+        "gst_rate": 18
+      }
+    ],
+    "amendments": []
+  }
+]
