@@ -2,6 +2,8 @@
 
 An accounts payable exception agent that remembers how your team resolved past exceptions, powered by [Hindsight](https://github.com/vectorize-io/hindsight) agent memory.
 
+**Live demo:** https://precedent-he9a.onrender.com. It runs on Render's free plan, so the first visit after a quiet spell takes about a minute to wake up. Reset, seeding and new replay runs are turned off there; everything else works.
+
 ![Quarter replay: agreement with the reviewer, with and without memory](docs/screenshots/replay.png)
 
 Every AP team has knowledge that lives in one senior reviewer's head: "Shree Ganesh always spikes before Diwali, it's fine if procurement amended the PO." Precedent turns each human resolution into memory, so the next time a similar exception arrives the reviewer sees the earlier case, and the agent can say whether that precedent actually applies.
